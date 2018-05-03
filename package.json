@@ -1,0 +1,73 @@
+{
+  "name": "alheimsins-b5-web",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "author": {
+    "name": "Jonas Enge",
+    "email": "jonas.enge@t-fk.no",
+    "url": "https://github.com/telemark"
+  },
+  "contributors": [
+    {
+      "name": "Geir Gåsodden",
+      "email": "geir.gasodden@pythonia.no",
+      "url": "https://github.com/zrrrzzt"
+    }
+  ],
+  "main": "server.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "test": "standard && nsp check && ava",
+    "test-offline": "standard && ava",
+    "coverage": "nyc ava",
+    "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
+    "standard-fix": "standard --fix",
+    "dev": "micro-dev -H localhost --watch server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production micro",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
+    "deploy": "now && now alias"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.18.0",
+    "b5-calculate-score": "1.0.4",
+    "b5-johnson-120-ipip-neo-pi-r": "1.1.8",
+    "b5-result-text": "1.3.0",
+    "dotenv": "5.0.1",
+    "iso-639-1": "2.0.3",
+    "micro": "9.3.0",
+    "micro-dev": "2.2.2",
+    "mongojs": "2.5.0",
+    "next": "6.0.0",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-easy-chart": "1.0.0",
+    "react-icons": "2.2.7"
+  },
+  "devDependencies": {
+    "ava": "0.25.0",
+    "coveralls": "3.0.0",
+    "nsp": "3.2.1",
+    "nyc": "11.7.1",
+    "standard": "11.0.1"
+  },
+  "now": {
+    "name": "bigfive-web",
+    "alias": "bigfive-test.com",
+    "type": "npm",
+    "engines": {
+      "node": "10.0.0"
+    }
+  },
+  "dotenv": "production.env",
+  "standard": {
+    "ignore": [
+      "/static/*.js"
+    ]
+  }
+}
