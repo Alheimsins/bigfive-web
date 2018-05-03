@@ -4,7 +4,7 @@ import calculateScore from 'b5-calculate-score'
 import getResult from 'b5-result-text'
 import axios from 'axios'
 import getConfig from 'next/config'
-import { Field, Button, InputText } from '../components/alheimsins'
+import { Loading, Field, Button, InputText } from '../components/alheimsins'
 const { publicRuntimeConfig } = getConfig()
 
 const httpInstance = axios.create({
@@ -16,7 +16,7 @@ const Facet = ({ data }) => (
   <div>
     <h2>{data.title}</h2>
     <p>Score: {data.score}/20 - {data.scoreText}</p>
-    <p>{data.text}</p>
+    <p><span dangerouslySetInnerHTML={{__html: data.text}} /></p>
   </div>
 )
 
@@ -26,7 +26,7 @@ const Domain = ({ data, chartWidth }) => (
     <p><em>{data.shortDescription}</em></p>
     <p>Score: {data.score}/120 - {data.scoreText}</p>
     <p><strong>{data.text}</strong></p>
-    <p>{data.description}</p>
+    <p><span dangerouslySetInnerHTML={{__html: data.description}} /></p>
     {data && data.facets && <Summary data={data.facets} yDomainRange={[0, 20]} chartWidth={chartWidth} />}
     {data && data.facets && data.facets.map((facet, index) => <Facet data={facet} key={index} />)}
     <style jsx>
@@ -90,7 +90,8 @@ export default class extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      chartWidth: 600
+      chartWidth: 600,
+      loading: true
     }
     this.getWidth = this.getWidth.bind(this)
   }
@@ -101,10 +102,12 @@ export default class extends Component {
     if (this.props.query && this.props.query.id && this.props.query.id.length > 20) {
       try {
         const { data: results } = await httpInstance.get(`/api/get/${this.props.query.id}`)
-        this.setState({ results })
+        this.setState({ results, loading: false })
       } catch (error) {
         throw error
       }
+    } else {
+      this.setState({ loading: false })
     }
   }
 
@@ -114,17 +117,19 @@ export default class extends Component {
   }
 
   render () {
-    const { lang, results } = this.state
+    const { results, loading } = this.state
     let resume
     if (results && results.answers) {
       const scores = calculateScore(results)
-      resume = getResult({scores, lang})
+      resume = getResult({scores, lang: results.lang || 'en'})
     }
     return (
       <div>
         <h2>Result</h2>
         {
-          resume
+          loading ?
+            <Loading />
+          : resume
             ? <Resume data={resume} width={this.state.chartWidth} />
             : <div style={{ textAlign: 'left' }}>
               <Field name='ID'>
