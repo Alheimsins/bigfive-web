@@ -5,6 +5,7 @@ import getResult from 'b5-result-text'
 import axios from 'axios'
 import getConfig from 'next/config'
 import { Loading, Field, Button, InputText } from '../components/alheimsins'
+import GetResults from '../components/GetResults'
 const { publicRuntimeConfig } = getConfig()
 
 const httpInstance = axios.create({
@@ -91,24 +92,28 @@ export default class extends Component {
     super(props)
     this.state = {
       chartWidth: 600,
-      loading: true
+      loading: false
     }
     this.getWidth = this.getWidth.bind(this)
+    this.setResults = this.setResults.bind(this)
   }
 
   async componentDidMount () {
     document.addEventListener('DOMContentLoaded', this.getWidth(), false)
     window.addEventListener('resize', this.getWidth.bind(this))
     if (this.props.query && this.props.query.id && this.props.query.id.length > 20) {
+      this.setState({ loading: true })
       try {
         const { data: results } = await httpInstance.get(`/api/get/${this.props.query.id}`)
         this.setState({ results, loading: false })
       } catch (error) {
         throw error
       }
-    } else {
-      this.setState({ loading: false })
     }
+  }
+
+  setResults (results) {
+    this.setState({ results })
   }
 
   getWidth () {
@@ -127,16 +132,10 @@ export default class extends Component {
       <div>
         <h2>Result</h2>
         {
-          loading ?
-            <Loading />
+          loading ? <Loading />
           : resume
             ? <Resume data={resume} width={this.state.chartWidth} />
-            : <div style={{ textAlign: 'left' }}>
-              <Field name='ID'>
-                <InputText placeholder='URL or id for result' />
-              </Field>
-              <Button value='Get results' />
-            </div>
+            : <GetResults setResults={this.setResults} />
         }
       </div>
     )
