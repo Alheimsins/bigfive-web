@@ -10,7 +10,6 @@ const httpInstance = axios.create({
   timeout: 1000
 })
 
-
 export default class extends Component {
   constructor (props) {
     super(props)
@@ -19,7 +18,7 @@ export default class extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  async handleSubmit(e) {
+  async handleSubmit (e) {
     e.preventDefault()
     const id = validMongoId(this.state.url) ? this.state.url : false
     if (id) {
@@ -38,7 +37,7 @@ export default class extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  render() {
+  render () {
     return (
       <div style={{ textAlign: 'left' }}>
         <form onSubmit={this.handleSubmit}>

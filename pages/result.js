@@ -133,9 +133,9 @@ export default class extends Component {
         <h2>Result</h2>
         {
           loading ? <Loading />
-          : resume
-            ? <Resume data={resume} width={this.state.chartWidth} />
-            : <GetResults setResults={this.setResults} />
+            : resume
+              ? <Resume data={resume} width={this.state.chartWidth} />
+              : <GetResults setResults={this.setResults} />
         }
       </div>
     )

@@ -5,6 +5,7 @@ import getResult from 'b5-result-text'
 import axios from 'axios'
 import getConfig from 'next/config'
 import { Loading, Field, Button, InputText } from '../components/alheimsins'
+import { MdDelete } from 'react-icons/lib/md'
 const { publicRuntimeConfig } = getConfig()
 
 const httpInstance = axios.create({
@@ -12,10 +13,13 @@ const httpInstance = axios.create({
   timeout: 1000
 })
 
-const CompareAdd = ({ handleSubmit, handleChange, error, name, url, people }) => (
+const CompareAdd = ({ handleSubmit, handleDelete, handleChange, error, name, url, people }) => (
   <div style={{ textAlign: 'left' }}>
-    { people && people.length > 0 && people.map(person =>
-      <div key={person.url} className='persons'>
+    { people && people.length > 0 && people.map((person, i) =>
+      <div key={i} className='persons'>
+        <a title='Delete' onClick={() => handleDelete(i)}>
+          <MdDelete style={{ cursor: 'pointer', marginRight: '10px' }}/>
+        </a>
         <b>{person.name}</b> - <i>{person.url}</i>
       </div>
     )}
@@ -34,7 +38,7 @@ const CompareAdd = ({ handleSubmit, handleChange, error, name, url, people }) =>
       {`
         .persons {
           padding: 8px;
-          font-size: 12px;
+          font-size: 14px;
         }
         .persons:nth-of-type(even) {
           background: rgb(234, 234, 234);
@@ -56,6 +60,7 @@ export default class extends Component {
     this.setResults = this.setResults.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   async componentDidMount () {
@@ -69,6 +74,12 @@ export default class extends Component {
 
   handleChange (e) {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleDelete (num) {
+    const people = this.state.people
+    people.splice(num, 1)
+    this.setState({ people: [ ...people ] })
   }
 
   handleSubmit (e) {
@@ -94,12 +105,13 @@ export default class extends Component {
       <div>
         <h2>Compare</h2>
         {
-          loading ?
-            <Loading />
-          : resume
-            ? <div>asd</div>
-            : <CompareAdd
+          loading
+            ? <Loading />
+            : resume
+              ? <div>asd</div>
+              : <CompareAdd
                 handleChange={this.handleChange}
+                handleDelete={this.handleDelete}
                 handleSubmit={this.handleSubmit}
                 name={this.state.name}
                 url={this.state.url}
