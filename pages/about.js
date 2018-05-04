@@ -11,7 +11,7 @@ const users = [
     dev: true
   },
   {
-    avatar: 'http://www.interactiveparty.com/sites/interactiveparty.com/files/default_images/testmonial%20default.png',
+    avatar: '/static/zrrrzzt.png',
     name: 'Geir Gåsodden',
     nick: {
       name: 'zrrrzzt',
@@ -21,10 +21,10 @@ const users = [
     dev: true
   },
   {
-    avatar: 'http://www.interactiveparty.com/sites/interactiveparty.com/files/default_images/testmonial%20default.png',
+    avatar: '/static/elimg.png',
     name: 'Eli Marianne Huseby',
     nick: {
-      name: 'elimg',
+      name: 'elimh',
       link: 'http://blekksprutene.no/'
     },
     description: 'generally a nice woman'

@@ -1,10 +1,10 @@
-import { Component } from 'react'
+import { Component, Fragment } from 'react'
 import { BarChart } from 'react-easy-chart'
 import calculateScore from 'b5-calculate-score'
 import getResult from 'b5-result-text'
 import axios from 'axios'
 import getConfig from 'next/config'
-import { Loading, Field, Button, InputText } from '../components/alheimsins'
+import { Code, Loading, Field, Button, InputText } from '../components/alheimsins'
 import { MdDelete } from 'react-icons/lib/md'
 const { publicRuntimeConfig } = getConfig()
 
@@ -109,14 +109,18 @@ export default class extends Component {
             ? <Loading />
             : resume
               ? <div>asd</div>
-              : <CompareAdd
-                handleChange={this.handleChange}
-                handleDelete={this.handleDelete}
-                handleSubmit={this.handleSubmit}
-                name={this.state.name}
-                url={this.state.url}
-                people={this.state.people}
-              />
+              : <Fragment>
+                  <p>Compare results from the bigfive personality tests with multiple people.</p>
+                  <p>Type in either the id <Code>58a70606a835c400c8b38e84</Code> or link <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code> in the ID-input field.</p>
+                  <CompareAdd
+                    handleChange={this.handleChange}
+                    handleDelete={this.handleDelete}
+                    handleSubmit={this.handleSubmit}
+                    name={this.state.name}
+                    url={this.state.url}
+                    people={this.state.people}
+                  />
+                </Fragment>
         }
       </div>
     )

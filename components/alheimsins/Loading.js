@@ -1,21 +1,14 @@
-import { Fragment } from 'react'
-
 export default () => (
-  <Fragment>
-    <span className='loading'>
-      <p>
-        <img src='/static/loading.svg' style={{width: 100}} />
-      </p>
-      <p>
-        <big>LOADING ...</big>
-      </p>
-      <style jsx>
-        {`
-        .loading {
-          text-align: center;
-        }
-      `}
-      </style>
-    </span>
-  </Fragment>
+  <div className='loading'>
+    <img src='/static/spinner.gif' style={{width: 30}} />
+    <big style={{ marginLeft: '8px', verticalAlign: 'text-bottom' }}>LOADING ...</big>
+    <style jsx>
+      {`
+      .loading {
+        text-align: center;
+        line-height: 34px;
+      }
+    `}
+    </style>
+  </div>
 )

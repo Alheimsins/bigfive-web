@@ -9,8 +9,32 @@ const httpInstance = axios.create({
   timeout: 1000
 })
 const { getItems: getInventory, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
+const { languages } = getInfo()
 const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
+
+const LanguageBar = ({ switchLanguage, selectedLanguage }) => (
+  <div className='lang'>
+    { languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>) }
+    <style jsx>
+     {`
+        .language {
+          padding: 5px;
+          cursor: pointer;
+          margin-left: 4px;
+        }
+        .languageSelected {
+          padding: 2px;
+          cursor: pointer;
+          margin-left: 4px;
+          border-radius: 10px;
+          padding: 5px;
+          background-color: #e6e6e6;
+        }
+      `}
+    </style>
+  </div>
+)
 
 export default class extends Component {
   constructor (props) {
@@ -31,12 +55,19 @@ export default class extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleBack = this.handleBack.bind(this)
+    this.switchLanguage = this.switchLanguage.bind(this)
   }
 
   componentDidMount () {
     const itemsPerPage = window.innerWidth < 600 ? 1 : 4
     const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
     this.setState({ items, itemsPerPage })
+  }
+
+  switchLanguage (lang) {
+    const inventory = getInventory(lang)
+    const { items } = getItems(this.state.position, this.state.itemsPerPage, inventory).current()
+    this.setState({ inventory, lang, items })
   }
 
   async handleChange (e) {
@@ -94,8 +125,11 @@ export default class extends Component {
     const { handleChange, handleSubmit, handleBack } = this
     return (
       <div style={{textAlign: 'left'}}>
-        <div style={{textAlign: 'right', fontSize: '12px'}}>
-          <Timer start={this.state.now} />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <LanguageBar switchLanguage={this.switchLanguage} selectedLanguage={this.state.lang} />
+          <div style={{textAlign: 'right', fontSize: '12px'}}>
+            <Timer start={this.state.now} />
+          </div>
         </div>
         <ProgressBar progress={progress} />
         { items.map(item =>
@@ -122,6 +156,10 @@ export default class extends Component {
           {`
             .item {
               margin-top: 30px;
+            }
+            .lang a {
+              color: black;
+              cursor: pointer;
             }
             .navigation {
               margin-top: 30px;

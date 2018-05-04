@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Field, Button, InputText } from '../components/alheimsins'
+import { Field, Button, InputTextUncontrolled } from '../components/alheimsins'
 import axios from 'axios'
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
@@ -42,7 +42,7 @@ export default class extends Component {
       <div style={{ textAlign: 'left' }}>
         <form onSubmit={this.handleSubmit}>
           <Field name='ID'>
-            <InputText name='url' onChange={this.handleChange} placeholder='URL or id for result' />
+            <InputTextUncontrolled name='url' onChange={this.handleChange} placeholder='URL or id for result' />
           </Field>
           { this.state.error && <p color='red'>{this.state.error}</p> }
           <Button value='Get results' type='submit' disabled={!this.state.url} />
