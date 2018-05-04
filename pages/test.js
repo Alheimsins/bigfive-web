@@ -17,7 +17,7 @@ const LanguageBar = ({ switchLanguage, selectedLanguage }) => (
   <div className='lang'>
     { languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>) }
     <style jsx>
-     {`
+      {`
         .language {
           padding: 5px;
           cursor: pointer;

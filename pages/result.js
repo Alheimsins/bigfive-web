@@ -137,21 +137,21 @@ export default class extends Component {
           loading ? <Loading />
             : resume
               ? <Fragment>
-                  <p className='share'>
+                <p className='share'>
                     Share on{' '}
-                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
-                    <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
-                    <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
-                  </p>
-                  Save the following ID to see the results later or compare yourself to others - <Code>{ this.props.query.id }</Code>
-                  <Resume data={resume} width={this.state.chartWidth} />
-                  <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
-                </Fragment>
+                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
+                  <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
+                  <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
+                </p>
+                { this.props.query.id && <Fragment>Save the following ID to see the results later or compare yourself to others - <Code>{ this.props.query.id }</Code></Fragment> }
+                <Resume data={resume} width={this.state.chartWidth} />
+                <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
+              </Fragment>
               : <Fragment>
-                  <p>If you have taken the test and saved your ID, you can see the results here</p>
-                  <p>Type in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br />- or -<br/> the link i.e. <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
-                  <GetResults setResults={this.setResults} />
-                </Fragment>
+                <p>If you have taken the test and saved your ID, you can see the results here by
+                typing in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br /><i>- or -</i><br /> the link i.e. <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
+                <GetResults setResults={this.setResults} />
+              </Fragment>
         }
       </div>
     )

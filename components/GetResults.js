@@ -1,14 +1,9 @@
 import { Component } from 'react'
 import { Field, Button, InputTextUncontrolled } from '../components/alheimsins'
-import axios from 'axios'
 import getConfig from 'next/config'
+import Router from 'next/router'
 const { publicRuntimeConfig } = getConfig()
 const validMongoId = id => /^[0-9a-fA-F]{24}$/.test(id)
-
-const httpInstance = axios.create({
-  baseURL: publicRuntimeConfig.URL,
-  timeout: 1000
-})
 
 export default class extends Component {
   constructor (props) {
@@ -23,12 +18,7 @@ export default class extends Component {
     const url = /^((http|https):\/\/)/.test(this.state.url) ? this.state.url.replace(publicRuntimeConfig.URL + '/result/', '') : this.state.url
     const id = validMongoId(url) ? url : false
     if (id) {
-      try {
-        const { data: results } = await httpInstance.get(`/api/get/${id}`)
-        this.props.setResults(results)
-      } catch (error) {
-        this.setState({ error: error })
-      }
+      Router.push(`${publicRuntimeConfig.URL}/result/${id}`)
     } else {
       this.setState({ error: 'Not a valid ID' })
     }
@@ -43,7 +33,7 @@ export default class extends Component {
       <div style={{ textAlign: 'left' }}>
         <form onSubmit={this.handleSubmit}>
           <Field name='ID'>
-            <InputTextUncontrolled name='url' onChange={this.handleChange} placeholder='URL or id for result' />
+            <InputTextUncontrolled name='url' onChange={this.handleChange} placeholder='URL or id for result' autoFocus={true} />
           </Field>
           { this.state.error && <p color='red'>{this.state.error}</p> }
           <Button value='Get results' type='submit' disabled={!this.state.url} />

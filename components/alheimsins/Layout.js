@@ -12,6 +12,7 @@ export default ({ user, children }) => (
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />
       <link rel='shortcut icon' href='/static/favicon.ico' />
+      <link rel='manifest' href='/static/manifest.json' />
     </Head>
     <Header user={user} />
     <div className='main'>

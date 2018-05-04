@@ -7,7 +7,9 @@ export default function InputText (props) {
     maxLength: props.maxLength,
     placeholder: props.placeholder,
     onChange: props.onChange,
-    value: props.value
+    value: props.value,
+    autoComplete: props.autoComplete,
+    autoFocus: props.autoFocus
   }
   return (
     <div>
