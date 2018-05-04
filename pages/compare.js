@@ -110,8 +110,8 @@ export default class extends Component {
             : resume
               ? <div>asd</div>
               : <Fragment>
-                  <p>Compare results from the bigfive personality tests with multiple people.</p>
-                  <p>Type in either the id <Code>58a70606a835c400c8b38e84</Code> or link <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code> in the ID-input field.</p>
+                  <p>Compare results from the bigfive personality test with multiple people.</p>
+                  <p>Type in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br />- or -<br/> the link i.e. <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
                   <CompareAdd
                     handleChange={this.handleChange}
                     handleDelete={this.handleDelete}

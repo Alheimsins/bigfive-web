@@ -20,7 +20,8 @@ export default class extends Component {
 
   async handleSubmit (e) {
     e.preventDefault()
-    const id = validMongoId(this.state.url) ? this.state.url : false
+    const url = /^((http|https):\/\/)/.test(this.state.url) ? this.state.url.replace(publicRuntimeConfig.URL + '/result/', '') : this.state.url
+    const id = validMongoId(url) ? url : false
     if (id) {
       try {
         const { data: results } = await httpInstance.get(`/api/get/${id}`)

@@ -1,5 +1,6 @@
 import { Component, Fragment } from 'react'
 import { BarChart } from 'react-easy-chart'
+import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/lib/fa'
 import calculateScore from 'b5-calculate-score'
 import getResult from 'b5-result-text'
 import axios from 'axios'
@@ -10,7 +11,7 @@ const { publicRuntimeConfig } = getConfig()
 
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
-  timeout: 1000
+  timeout: 2000
 })
 
 const Facet = ({ data }) => (
@@ -128,14 +129,29 @@ export default class extends Component {
       const scores = calculateScore(results)
       resume = getResult({scores, lang: results.lang || 'en'})
     }
+    const currentUrl = publicRuntimeConfig.URL + this.props.path
     return (
       <div>
         <h2>Result</h2>
         {
           loading ? <Loading />
             : resume
-              ? <Resume data={resume} width={this.state.chartWidth} />
-              : <Fragment><p>Type in either the id <Code>58a70606a835c400c8b38e84</Code> or link <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code> in the ID-input field.</p><GetResults setResults={this.setResults} /></Fragment>
+              ? <Fragment>
+                  <p className='share'>
+                    Share on{' '}
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
+                    <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
+                    <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
+                  </p>
+                  Save the following ID to see the results later or compare yourself to others - <Code>{ this.props.query.id }</Code>
+                  <Resume data={resume} width={this.state.chartWidth} />
+                  <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
+                </Fragment>
+              : <Fragment>
+                  <p>If you have taken the test and saved your ID, you can see the results here</p>
+                  <p>Type in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br />- or -<br/> the link i.e. <Code>https://bigfive-test.com/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
+                  <GetResults setResults={this.setResults} />
+                </Fragment>
         }
       </div>
     )

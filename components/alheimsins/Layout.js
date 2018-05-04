@@ -6,6 +6,9 @@ export default ({ user, children }) => (
   <div className='container'>
     <Head>
       <meta name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width' />
+      <meta property='og:title' content='BigFive personality test' />
+      <meta property='og:description' content='Take a free BigFive personality test' />
+      <meta property='og:image' content='/static/apple-icon-152x152.png' />
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />
       <link rel='shortcut icon' href='/static/favicon.ico' />
@@ -20,7 +23,7 @@ export default ({ user, children }) => (
         body {
           background: white;
           color: black;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
           text-align: center;
           margin: 0;
           padding: 0;

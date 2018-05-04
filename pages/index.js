@@ -32,8 +32,8 @@ export default class extends Component {
           Tests and evaluation is gathered from <a href='http://ipip.ori.org' target='_blank'>ipip.ori.org</a>, the
           inventory is from <i>Johnson's (2014) 120-item IPIP NEO-PI-R</i>.
           </p>
-          <p>The following test contains <b>120 questions</b> who is estimated to take about <b>10 minutes</b>.</p>
-          <p>After you have submited the test you will recive a detailed report about your personality in the following domains: <i>Openness to experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism.</i></p>
+          <p>The following test contains <b>120 questions</b> who is estimated to take you about <b>10 minutes</b>.</p>
+          <p>After you have submited the test you will recive a detailed personality report in the following domains: <i>Openness to experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism.</i></p>
           <h2>Tips</h2>
           <p>- Answer honestly, even if you don't like the answer</p>
           <p>- Describe yourself as you generally are now, not as you wish to be in the future</p>
