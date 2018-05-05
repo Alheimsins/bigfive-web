@@ -38,24 +38,8 @@ const Facets = ({facets, chartWidth}) => {
 }
 
 const Comparisons = ({ data, chartWidth }) => (
-  <div className='domain-wrapper'>
+  <div>
     {data.map((domain, index) => <DomainScores data={domain} chartWidth={chartWidth} key={index} />)}
-    <style jsx>
-      {`
-        span {
-          margin-right: 10px;
-        }
-        .domain-wrapper {
-          border-radius: 0;
-          background-color: #FFF;
-          box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
-          color: black;
-          margin-top: 10px;
-          padding: 10px;
-          text-align: left;
-        }
-      `}
-    </style>
   </div>
 )
 
@@ -149,7 +133,7 @@ export default class extends Component {
       const { data } = await httpInstance.get(`/api/get/${item.url}`)
       return { data, name: item.name }
     }))
-    const comparison = repackResults(scores, 'en')
+    const comparison = repackResults(scores, scores[0].data.lang)
     this.setState({ comparison, loading: false })
   }
 
