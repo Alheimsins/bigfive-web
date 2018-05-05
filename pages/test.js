@@ -139,7 +139,7 @@ export default class extends Component {
             </div>
             <RadioGroup name={item.id} onChange={handleChange} checked={answers[item.id] && answers[item.id].score}>
               { item.choices.map(choice =>
-                <Radio key={item.id + choice.score} value={choice.score} color={choice.color} text={choice.text} style={{display: 'block'}} />
+                <Radio key={item.id + choice.score} value={choice.score} color='5'  text={choice.text} style={{display: 'block'}} />
               )}
             </RadioGroup>
           </div>
