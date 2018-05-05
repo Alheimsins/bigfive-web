@@ -4,13 +4,13 @@ import getConfig from 'next/config'
 import Router from 'next/router'
 import { Code, Loading, Field, Button, InputText } from '../components/alheimsins'
 import { MdDelete } from 'react-icons/lib/md'
-import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/lib/fa'
 import Summary from '../components/Summary'
+import SocialShare from '../components/SocialShare'
 import repackResults from '../lib/repack-results'
 import base64url from '../lib/base64url'
+import validMongoId from '../lib/valid-mongoid'
+import formatId from '../lib/format-id'
 const { publicRuntimeConfig } = getConfig()
-const validMongoId = id => /^[0-9a-fA-F]{24}$/.test(id)
-const formatId = id => /^((http|https):\/\/)/.test(id) ? id.replace(publicRuntimeConfig.URL + '/result/', '').replace(' ', '') : id ? id.replace(' ', '') : id
 
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
@@ -163,14 +163,8 @@ export default class extends Component {
             ? <Loading />
             : comparison
               ? <Fragment>
-                <p className='share'>
-                      Share on{' '}
-                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
-                  <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
-                  <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
-                </p>
+                <SocialShare url={currentUrl} />
                 <Comparisons data={comparison} chartWidth={this.state.chartWidth} />
-                <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
               </Fragment>
               : <Fragment>
                 <p>Compare results from the bigfive personality test with multiple people.</p>

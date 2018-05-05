@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import Router from 'next/router'
+import LanguageBar from '../components/LanguageBar'
 import { Button, ProgressBar, RadioGroup, Radio, Timer } from '../components/alheimsins'
 import getConfig from 'next/config'
 import axios from 'axios'
@@ -9,32 +10,8 @@ const httpInstance = axios.create({
   timeout: 1000
 })
 const { getItems: getInventory, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
-const { languages } = getInfo()
 const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
-
-const LanguageBar = ({ switchLanguage, selectedLanguage }) => (
-  <div className='lang'>
-    { languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>) }
-    <style jsx>
-      {`
-        .language {
-          padding: 5px;
-          cursor: pointer;
-          margin-left: 4px;
-        }
-        .languageSelected {
-          padding: 2px;
-          cursor: pointer;
-          margin-left: 4px;
-          border-radius: 10px;
-          padding: 5px;
-          background-color: #e6e6e6;
-        }
-      `}
-    </style>
-  </div>
-)
 
 export default class extends Component {
   constructor (props) {

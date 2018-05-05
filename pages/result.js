@@ -1,18 +1,32 @@
 import { Component, Fragment } from 'react'
-import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/lib/fa'
+import Router from 'next/router'
 import calculateScore from 'b5-calculate-score'
 import getResult from 'b5-result-text'
 import axios from 'axios'
 import getConfig from 'next/config'
-import { Code, Loading } from '../components/alheimsins'
+import { Code, Loading, Field, InputTextUncontrolled, Button } from '../components/alheimsins'
 import Summary from '../components/Summary'
-import GetResults from '../components/GetResults'
+import SocialShare from '../components/SocialShare'
+import validMongoId from '../lib/valid-mongoid'
+import formatId from '../lib/format-id'
 const { publicRuntimeConfig } = getConfig()
 
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
   timeout: 5000
 })
+
+const AddResult = ({ handleInputSubmit, handleInputChange, error, disabledButton }) => (
+  <div style={{ textAlign: 'left' }}>
+    <form onSubmit={handleInputSubmit}>
+      <Field name='ID'>
+        <InputTextUncontrolled name='url' onChange={handleInputChange} placeholder='URL or id for result' autoFocus />
+      </Field>
+      { error && <p color='red'>{error}</p> }
+      <Button value='Get results' type='submit' disabled={disabledButton} />
+    </form>
+  </div>
+)
 
 const Facet = ({ data }) => (
   <div>
@@ -65,7 +79,8 @@ export default class extends Component {
       loading: false
     }
     this.getWidth = this.getWidth.bind(this)
-    this.setResults = this.setResults.bind(this)
+    this.handleInputSubmit = this.handleInputSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   async componentDidMount () {
@@ -82,17 +97,30 @@ export default class extends Component {
     }
   }
 
-  setResults (results) {
-    this.setState({ results })
-  }
-
   getWidth () {
     const width = document.documentElement.clientWidth * 0.9
     this.setState({chartWidth: width >= 500 ? width : 500})
   }
 
+  async handleInputSubmit (e) {
+    e.preventDefault()
+    const url = formatId(this.state.url)
+    const id = validMongoId(url) ? url : false
+    if (id) {
+      Router.push(`${publicRuntimeConfig.URL}/result/${id}`)
+    } else {
+      this.setState({ error: 'Not a valid ID' })
+    }
+  }
+
+  handleInputChange (e) {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
   render () {
-    const { results, loading } = this.state
+    const { results, loading, error } = this.state
+    const { handleInputSubmit, handleInputChange } = this
+    const disabledButton = !validMongoId(formatId(this.state.url))
     let resume
     if (results && results.answers) {
       const scores = calculateScore(results)
@@ -106,20 +134,14 @@ export default class extends Component {
           loading ? <Loading />
             : resume
               ? <Fragment>
-                <p className='share'>
-                    Share on{' '}
-                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
-                  <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
-                  <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
-                </p>
+                <SocialShare url={currentUrl} />
                 { this.props.query.id && <Fragment>Save the following ID to see the results later or compare yourself to others - <Code>{ this.props.query.id }</Code></Fragment> }
                 <Resume data={resume} width={this.state.chartWidth} />
-                <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
               </Fragment>
               : <Fragment>
                 <p>If you have taken the test and saved your ID, you can see the results here by
                 typing in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br /><i>- or -</i><br /> the link i.e. <Code>{publicRuntimeConfig.URL}/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
-                <GetResults setResults={this.setResults} />
+                <AddResult handleInputSubmit={handleInputSubmit} handleInputChange={handleInputChange} error={error} disabledButton={disabledButton} />
               </Fragment>
         }
       </div>

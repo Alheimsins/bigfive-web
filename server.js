@@ -9,7 +9,7 @@ const mongo = require('mongojs')
 const { parse: urlParse } = require('url')
 const config = require('./config')
 const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
-const validMongoId = id => /^[0-9a-fA-F]{24}$/.test(id)
+const validMongoId = require('./lib/valid-mongoid')
 
 const app = next({ dev })
 const handle = app.getRequestHandler()
