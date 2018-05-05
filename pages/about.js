@@ -30,7 +30,7 @@ const users = [
     description: 'generally a nice woman'
   },
   {
-    avatar: 'http://www.interactiveparty.com/sites/interactiveparty.com/files/default_images/testmonial%20default.png',
+    avatar: '/static/person.png',
     name: 'Eduardo Calle',
     nick: {
       name: 'nieled',
@@ -46,7 +46,7 @@ const Users = ({ users }) => (
       <div key={user.nick.name} className='info'>
         <div>
           <span className='avatar'>
-            <img width='80' height='80' src={user.avatar} />
+            <img alt='Avatar' width='80' height='80' src={user.avatar} />
           </span>
         </div>
         <div className='text'>

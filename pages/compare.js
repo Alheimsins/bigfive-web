@@ -26,7 +26,7 @@ const CompareAdd = ({ handleSubmit, handleDelete, handleChange, error, name, url
     { people && people.length >= 2 && <Button value='Compare people' /> }
     <form onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
       <Field name='Name'>
-        <InputText name='name' value={name} onChange={handleChange} placeholder='Name for comparison' autoComplete='off' autoFocus={true} />
+        <InputText name='name' value={name} onChange={handleChange} placeholder='Name for comparison' autoComplete='off' autoFocus />
       </Field>
       <Field name='ID'>
         <InputText name='url' value={url} onChange={handleChange} placeholder='URL or id for comparison' autoComplete='off' />

@@ -1,5 +1,8 @@
 {
- "name": "Alheimsins",
+ "name": "BigFive personality test",
+ "short_name": "B5Test",
+ "description": "Take a free, open-source BigFive personality test",
+ "display": "standalone",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",

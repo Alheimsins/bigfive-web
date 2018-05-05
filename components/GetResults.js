@@ -33,7 +33,7 @@ export default class extends Component {
       <div style={{ textAlign: 'left' }}>
         <form onSubmit={this.handleSubmit}>
           <Field name='ID'>
-            <InputTextUncontrolled name='url' onChange={this.handleChange} placeholder='URL or id for result' autoFocus={true} />
+            <InputTextUncontrolled name='url' onChange={this.handleChange} placeholder='URL or id for result' autoFocus />
           </Field>
           { this.state.error && <p color='red'>{this.state.error}</p> }
           <Button value='Get results' type='submit' disabled={!this.state.url} />
