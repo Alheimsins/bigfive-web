@@ -1,10 +1,13 @@
 import { Component, Fragment } from 'react'
 import axios from 'axios'
 import getConfig from 'next/config'
+import Router from 'next/router'
 import { Code, Loading, Field, Button, InputText } from '../components/alheimsins'
 import { MdDelete } from 'react-icons/lib/md'
+import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/lib/fa'
 import Summary from '../components/Summary'
 import repackResults from '../lib/repack-results'
+import base64url from '../lib/base64url'
 const { publicRuntimeConfig } = getConfig()
 const validMongoId = id => /^[0-9a-fA-F]{24}$/.test(id)
 const formatId = id => /^((http|https):\/\/)/.test(id) ? id.replace(publicRuntimeConfig.URL + '/result/', '').replace(' ', '') : id ? id.replace(' ', '') : id
@@ -43,8 +46,8 @@ const Comparisons = ({ data, chartWidth }) => (
   </div>
 )
 
-const CompareAdd = ({ handleAdd, handleDelete, handleChange, handleCompare, error, name, url, people }) => {
-  const formatUrl = formatId(url)
+const CompareAdd = ({ handleAdd, handleDelete, handleChange, handleCompare, error, name, id, people }) => {
+  const formatUrl = formatId(id)
   return (
     <div style={{ textAlign: 'left' }}>
       { people && people.length > 0 && people.map((person, i) =>
@@ -52,7 +55,7 @@ const CompareAdd = ({ handleAdd, handleDelete, handleChange, handleCompare, erro
           <a title='Delete' onClick={() => handleDelete(i)}>
             <MdDelete style={{ cursor: 'pointer', marginRight: '10px' }} />
           </a>
-          <b>{person.name}</b> - <i>{person.url}</i>
+          <b>{person.name}</b> - <i>{person.id}</i>
         </div>
       )}
       { people && people.length >= 2 && <Button value='Compare people' onClick={handleCompare} /> }
@@ -61,10 +64,10 @@ const CompareAdd = ({ handleAdd, handleDelete, handleChange, handleCompare, erro
           <InputText name='name' value={name} onChange={handleChange} placeholder='Name for comparison' autoComplete='off' autoFocus />
         </Field>
         <Field name='ID'>
-          <InputText name='url' value={url} onChange={handleChange} placeholder='URL or id for comparison' autoComplete='off' />
+          <InputText name='id' value={id} onChange={handleChange} placeholder='URL or id for comparison' autoComplete='off' />
         </Field>
         { error && <p color='red'>{error}</p> }
-        <Button value='Add' type='submit' disabled={!validMongoId(formatUrl) || !url || !name} />
+        <Button value='Add' type='submit' disabled={!validMongoId(formatUrl) || !id || !name} />
       </form>
       <style jsx>
         {`
@@ -103,6 +106,16 @@ export default class extends Component {
   async componentDidMount () {
     document.addEventListener('DOMContentLoaded', this.getWidth(), false)
     window.addEventListener('resize', this.getWidth.bind(this))
+    if (this.props.query && this.props.query.id) {
+      this.setState({ loading: true })
+      const people = base64url.decode(this.props.query.id)
+      const scores = await Promise.all(people.map(async item => {
+        const { data } = await httpInstance.get(`/api/get/${item.id}`)
+        return { data, name: item.name }
+      }))
+      const comparison = repackResults(scores, scores[0].data.lang)
+      this.setState({ comparison, loading: false })
+    }
   }
 
   setResults (results) {
@@ -122,19 +135,16 @@ export default class extends Component {
   handleAdd (e) {
     e.preventDefault()
     const name = this.state.name
-    const url = formatId(this.state.url)
-    this.setState({ name: '', url: '', people: [ ...this.state.people, { name, url } ] })
+    const id = formatId(this.state.id)
+    this.setState({ name: '', id: '', people: [ ...this.state.people, { name, id } ] })
   }
 
-  async handleCompare () {
-    this.setState({ loading: true })
-    const people = this.state.people
-    const scores = await Promise.all(people.map(async item => {
-      const { data } = await httpInstance.get(`/api/get/${item.url}`)
-      return { data, name: item.name }
-    }))
-    const comparison = repackResults(scores, scores[0].data.lang)
-    this.setState({ comparison, loading: false })
+  handleCompare () {
+    const people = JSON.stringify(this.state.people)
+    console.log(people)
+    const urlCompare = base64url.encode(people)
+    console.log(urlCompare)
+    Router.push(`${publicRuntimeConfig.URL}/compare/${urlCompare}`)
   }
 
   getWidth () {
@@ -144,6 +154,7 @@ export default class extends Component {
 
   render () {
     const { loading, comparison } = this.state
+    const currentUrl = publicRuntimeConfig.URL + this.props.path
     return (
       <div>
         <h2>Compare</h2>
@@ -151,7 +162,16 @@ export default class extends Component {
           loading
             ? <Loading />
             : comparison
-              ? <Comparisons data={comparison} chartWidth={this.state.chartWidth} />
+              ? <Fragment>
+                <p className='share'>
+                      Share on{' '}
+                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}><FaFacebook /></a>{' '}
+                  <a href={`https://twitter.com/home?status=${currentUrl}`}><FaTwitter />{' '}</a>
+                  <a href={`https://plus.google.com/share?url=${currentUrl}`}><FaGooglePlus /></a>
+                </p>
+                <Comparisons data={comparison} chartWidth={this.state.chartWidth} />
+                <style jsx>{` .share { text-align: right; } .share a { color: black; } `}</style>
+              </Fragment>
               : <Fragment>
                 <p>Compare results from the bigfive personality test with multiple people.</p>
                 <p>Type in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br /><i>- or -</i><br /> the link i.e. <Code>{publicRuntimeConfig.URL}/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
@@ -161,7 +181,7 @@ export default class extends Component {
                   handleAdd={this.handleAdd}
                   handleCompare={this.handleCompare}
                   name={this.state.name}
-                  url={this.state.url}
+                  id={this.state.id}
                   people={this.state.people}
                 />
               </Fragment>

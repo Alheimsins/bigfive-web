@@ -4,6 +4,7 @@ if (dev) {
 }
 const next = require('next')
 const { send, json } = require('micro')
+const match = require('micro-match')
 const mongo = require('mongojs')
 const { parse: urlParse } = require('url')
 const config = require('./config')
@@ -28,18 +29,21 @@ async function main (req, res) {
       send(res, 200, data)
     })
   } else if (pathname.includes('/api/get')) {
-    const id = pathname.replace('/api/get/', '')
+    const { id } = match('/api/get/:id', pathname)
     if (!id || !validMongoId(id)) throw new Error('Not a valid id')
     collection.findOne({ _id: mongo.ObjectId(id) }, (error, data) => {
       if (error) throw error
       send(res, 200, data)
     })
-  } else if (pathname.includes('/test')) {
-    const id = pathname.replace('/test/', '')
+  } else if (pathname.includes('/test/')) {
+    const { id } = match('/test/:id', pathname)
     app.render(req, res, '/test', { lang: id })
-  } else if (pathname.includes('/result')) {
-    const id = pathname.replace('/result/', '')
+  } else if (pathname.includes('/result/')) {
+    const { id } = match('/result/:id', pathname)
     app.render(req, res, '/result', { id: id })
+  } else if (pathname.includes('/compare/')) {
+    const { id } = match('/compare/:id', pathname)
+    app.render(req, res, '/compare', { id: id })
   } else {
     return handle(req, res)
   }
