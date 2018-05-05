@@ -8,9 +8,9 @@ Website for five factor model of personality based on work from [IPIP-NEO-PI](ht
 
 Tests and evaluation is gathered from [ipip.ori.org](http://ipip.ori.org).
 
-See it live @ [bigfive.world](https://bigfive-test.com)
+See it live @ [bigfive-test.com](https://bigfive-test.com)
 
-Written in [nodejs](https://nodejs.org) using [next.js](https://github.com/zeit/next.js)- and [micro](https://github.com/zeit/micro) framework
+Written in [nodejs](https://nodejs.org) using the [next.js](https://github.com/zeit/next.js) and [micro](https://github.com/zeit/micro) framework
 
 ## Installation
 
@@ -42,6 +42,13 @@ Install [Docker](https://www.docker.com/)
 ```sh
 docker run -d --name bigfive-web alheimsins/bigfive-web
 ```
+## Related
+
+- [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) Module for returning Big Five [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items
+
+## Help wanted
+
+If you want to help by translating the items to other languages [this](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r/blob/master/README.md#help-wanted) is how you do it.
 
 ## License
 
@@ -52,6 +59,3 @@ docker run -d --name bigfive-web alheimsins/bigfive-web
 Created by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber) with ❤ for [Alheimsins](https://alheimsins.net)
 
 <img src="https://image.ibb.co/dPH08G/logo_black.png" height="150px" width="150px" />
-
-![Robohash image of zrrrzzt](https://robots.kebabstudios.party/zrrrzzt.png "Robohash image of zrrrzzt")
-![Robohash image of maccyber](https://robots.kebabstudios.party/maccyber.png "Robohash image of maccyber")
