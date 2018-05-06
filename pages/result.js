@@ -104,7 +104,7 @@ export default class extends Component {
 
   async handleInputSubmit (e) {
     e.preventDefault()
-    const url = formatId(this.state.url)
+    const url = formatId(this.state.url, publicRuntimeConfig.URL)
     const id = validMongoId(url) ? url : false
     if (id) {
       Router.push(`${publicRuntimeConfig.URL}/result/${id}`)
@@ -120,7 +120,7 @@ export default class extends Component {
   render () {
     const { results, loading, error } = this.state
     const { handleInputSubmit, handleInputChange } = this
-    const disabledButton = !validMongoId(formatId(this.state.url))
+    const disabledButton = !validMongoId(formatId(this.state.url, publicRuntimeConfig.URL))
     let resume
     if (results && results.answers) {
       const scores = calculateScore(results)

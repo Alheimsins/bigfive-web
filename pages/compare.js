@@ -47,7 +47,7 @@ const Comparisons = ({ data, chartWidth }) => (
 )
 
 const CompareAdd = ({ handleAdd, handleDelete, handleChange, handleCompare, error, name, id, people }) => {
-  const formatUrl = formatId(id)
+  const formatUrl = formatId(id, publicRuntimeConfig.URL)
   return (
     <div style={{ textAlign: 'left' }}>
       { people && people.length > 0 && people.map((person, i) =>
@@ -96,7 +96,6 @@ export default class extends Component {
       people: []
     }
     this.getWidth = this.getWidth.bind(this)
-    this.setResults = this.setResults.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
@@ -118,10 +117,6 @@ export default class extends Component {
     }
   }
 
-  setResults (results) {
-    this.setState({ results })
-  }
-
   handleChange (e) {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -135,7 +130,7 @@ export default class extends Component {
   handleAdd (e) {
     e.preventDefault()
     const name = this.state.name
-    const id = formatId(this.state.id)
+    const id = formatId(this.state.id, publicRuntimeConfig.URL)
     this.setState({ name: '', id: '', people: [ ...this.state.people, { name, id } ] })
   }
 
