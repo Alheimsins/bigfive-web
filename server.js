@@ -3,55 +3,49 @@ if (dev) {
   require('dotenv').config()
 }
 const next = require('next')
-const { send, json } = require('micro')
-const match = require('micro-match')
+const routes = require('./routes')
 const mongo = require('mongojs')
-const { parse: urlParse } = require('url')
 const config = require('./config')
-const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
 const validMongoId = require('./lib/valid-mongoid')
 
 const app = next({ dev })
-const handle = app.getRequestHandler()
+const handler = routes.getRequestHandler(app)
+const port = parseInt(process.env.PORT, 10) || 3000
+const express = require('express')
 
-async function main (req, res) {
-  const { pathname } = await urlParse(req.url, true)
+app.prepare().then(() => {
+  const server = express()
   const db = mongo(config.DB_CONNECTION)
   const collection = db.collection(config.DB_COLLECTION)
 
-  if (pathname === '/api/login') {
-    return redirect(res, '/')
-  } else if (pathname === '/api/save') {
-    const result = await json(req)
-    if (!result) throw new Error('Not valid data')
-    collection.insert(result, (error, data) => {
-      if (error) throw error
-      send(res, 200, data)
-    })
-  } else if (pathname.includes('/api/get')) {
-    const { id } = match('/api/get/:id', pathname)
+  server.use(express.json())
+
+  server.get('/api/login', (req, res) => {
+    res.redirect('/')
+  })
+
+  server.get('/api/get/:id', (req, res) => {
+    const id = req.params && req.params.id ? req.params.id : false
     if (!id || !validMongoId(id)) throw new Error('Not a valid id')
     collection.findOne({ _id: mongo.ObjectId(id) }, (error, data) => {
       if (error) throw error
-      send(res, 200, data)
+      res.send(data)
     })
-  } else if (pathname.includes('/test/')) {
-    const { id } = match('/test/:id', pathname)
-    app.render(req, res, '/test', { lang: id })
-  } else if (pathname.includes('/result/')) {
-    const { id } = match('/result/:id', pathname)
-    app.render(req, res, '/result', { id: id })
-  } else if (pathname.includes('/compare/')) {
-    const { id } = match('/compare/:id', pathname)
-    app.render(req, res, '/compare', { id: id })
-  } else {
-    return handle(req, res)
-  }
-}
+  })
 
-async function setup (handler) {
-  await app.prepare()
-  return handler
-}
+  server.post('/api/save', (req, res) => {
+    const payload = req.body
+    console.log(payload)
+    collection.insert(payload, (error, data) => {
+      if (error) throw error
+      res.send(data)
+    })
+  })
 
-module.exports = setup(main)
+  server.use(handler)
+
+  server.listen(port, (err) => {
+    if (err) throw err
+    console.log(`> Ready on http://localhost:${port}`)
+  })
+})

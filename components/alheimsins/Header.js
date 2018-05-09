@@ -4,11 +4,11 @@ export default ({ user, info }) => (
   <header>
     <div className='nav-container'>
       <div className='links-container'>
-        <Link href='/' activeClassName='active'><a>HOME</a></Link>
-        <Link prefetch href='/test' activeClassName='active'><a>TEST</a></Link>
-        <Link href='/result' activeClassName='active'><a>RESULT</a></Link>
-        <Link href='/compare' activeClassName='active'><a>COMPARE</a></Link>
-        <Link href='/about' activeClassName='active'><a>ABOUT</a></Link>
+        <Link route='/' activeClassName='active'><a>HOME</a></Link>
+        <Link route='/test' activeClassName='active'><a>TEST</a></Link>
+        <Link route='/result' activeClassName='active'><a>RESULT</a></Link>
+        <Link route='/compare' activeClassName='active'><a>COMPARE</a></Link>
+        <Link route='/about' activeClassName='active'><a>ABOUT</a></Link>
       </div>
       <div className='nav-right'>
         { user

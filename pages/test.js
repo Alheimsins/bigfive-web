@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Router from 'next/router'
+import { Router } from '../routes'
 import LanguageBar from '../components/LanguageBar'
 import { Button, ProgressBar, RadioGroup, Radio, Timer } from '../components/alheimsins'
 import getConfig from 'next/config'
@@ -7,27 +7,31 @@ import axios from 'axios'
 const { publicRuntimeConfig } = getConfig()
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
-  timeout: 1000
+  timeout: 8000
 })
 const { getItems: getInventory, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
 const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
 
 export default class extends Component {
+  static async getInitialProps ({ query }) {
+    const lang = query.lang || 'en'
+    const inventory = await getInventory(lang)
+    return { inventory, lang }
+  }
+
   constructor (props) {
     super(props)
-    const lang = props && props.query && props.query.lang && props.query.lang.length === 2 ? props.query.lang : 'en'
-    const inventory = getInventory(lang)
     this.state = {
       progress: 0,
       position: 0,
-      inventory: inventory,
+      inventory: this.props.inventory,
       itemsPerPage: 4,
       results: [],
       answers: [],
       items: [],
       now: Date.now(),
-      lang: lang
+      lang: this.props.lang
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,18 +49,19 @@ export default class extends Component {
     const inventory = getInventory(lang)
     const { items } = getItems(this.state.position, this.state.itemsPerPage, inventory).current()
     this.setState({ inventory, lang, items })
+    Router.pushRoute('test', { lang })
   }
 
   async handleChange (e) {
-    let {answers, items, inventory, itemsPerPage} = this.state
+    let { answers, items, inventory, itemsPerPage } = this.state
     const { domain, facet } = inventory.find(q => q.id === e.target.name)
     answers[e.target.name] = { score: parseInt(e.target.value), domain, facet }
-    const next = itemsPerPage === 1 ? false : items.filter(item => !answers[item.id]).length === 0
     const progress = Math.round(Object.keys(answers).length / inventory.length * 100)
+    const next = itemsPerPage === 1 && progress !== 100 ? false : items.filter(item => !answers[item.id]).length === 0
     this.setState({ answers, progress, next })
-    if (itemsPerPage === 1) {
+    if (itemsPerPage === 1 && progress !== 100) {
       await sleep(700)
-      this.handleSubmit()
+      await this.handleSubmit()
     }
   }
 
@@ -87,7 +92,7 @@ export default class extends Component {
       }
       try {
         const { data } = await httpInstance.post('/api/save', result)
-        Router.push(`/result/${data._id}`)
+        Router.pushRoute('showResult', { id: data._id })
       } catch (error) {
         throw error
       }
@@ -98,14 +103,15 @@ export default class extends Component {
   }
 
   render () {
-    const { items, progress, answers, next, previous } = this.state
-    const { handleChange, handleSubmit, handleBack } = this
+    const { items, progress, answers, next, previous, lang, now } = this.state
+    const done = progress === 100 && next
+    const { handleChange, handleSubmit, handleBack, switchLanguage } = this
     return (
       <div style={{textAlign: 'left'}}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <LanguageBar switchLanguage={this.switchLanguage} selectedLanguage={this.state.lang} />
+          <LanguageBar switchLanguage={switchLanguage} selectedLanguage={lang} />
           <div style={{textAlign: 'right', fontSize: '12px'}}>
-            <Timer start={this.state.now} />
+            <Timer start={now} />
           </div>
         </div>
         <ProgressBar progress={progress} />
@@ -126,17 +132,13 @@ export default class extends Component {
             <Button type='submit' value='Back' onClick={handleBack} disabled={!previous} />
           </div>
           <div>
-            <Button type='submit' value='next' onClick={handleSubmit} disabled={!next} />
+            <Button type='submit' value={done ? 'See results' : 'Next'} onClick={handleSubmit} background={done ? '#FF0080' : 'black'} border={done ? '1px solid #FF0080' : '1px solid black'} disabled={!next} />
           </div>
         </div>
         <style jsx>
           {`
             .item {
               margin-top: 30px;
-            }
-            .lang a {
-              color: black;
-              cursor: pointer;
             }
             .navigation {
               margin-top: 30px;
