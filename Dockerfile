@@ -13,7 +13,7 @@ MAINTAINER Jonas Enge
 #### Begin setup ####
 
 # Extra tools for native dependencies
-RUN apk add --no-cache make gcc g++ python
+RUN apk add --no-cache make gcc g++ python git
 
 # Bundle app source
 COPY . /src
