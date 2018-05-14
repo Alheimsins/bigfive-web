@@ -5,7 +5,7 @@ import Footer from './Footer'
 export default ({ user, children }) => (
   <div className='container'>
     <Head>
-      <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, user-scalable=no, width=device-width' />
+      <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, width=device-width' />
       <meta property='og:title' content='BigFive personality test' />
       <meta property='og:description' content='Take a free, open-source BigFive personality test' />
       <meta property='og:image' content='/static/apple-icon-152x152.png' />

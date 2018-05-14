@@ -29,7 +29,7 @@ export default class extends Component {
           <p>This is a <b>free</b>, open-source personality test to measure the big five personality traits.
           </p>
           <p>
-          Tests and evaluation is gathered from <a href='http://ipip.ori.org' target='_blank'>ipip.ori.org</a><FaExternalLink size='8' style={{ verticalAlign: 'top' }} />, the
+          Tests and evaluation is gathered from <a href='http://ipip.ori.org' rel='noopener' target='_blank'>ipip.ori.org</a><FaExternalLink size='8' style={{ verticalAlign: 'top' }} />, the
           inventory is from <i>Johnson's (2014) 120-item IPIP NEO-PI-R</i>.
           </p>
           <p>The following test contains <b>120 questions</b> who is estimated to take you about <b>10 minutes</b>.</p>
