@@ -30,6 +30,7 @@ export default class extends Component {
     const disabledButton = !validMongoId(formatId(id))
     return (
       <Fragment>
+        <h2>Result</h2>
         <p>If you have taken the test and saved your ID, you can see the results here by
           typing in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br /><i>- or -</i><br /> the link i.e. <Code>{URL}/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
         <div style={{ textAlign: 'left' }}>

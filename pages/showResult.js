@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react'
 import calculateScore from 'b5-calculate-score'
-import getResult from 'b5-result-text'
+import getResult from '@alheimsins/b5-result-text'
 import axios from 'axios'
 import { Code } from '../components/alheimsins'
 import getConfig from 'next/config'
