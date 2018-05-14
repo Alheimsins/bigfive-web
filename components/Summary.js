@@ -1,14 +1,13 @@
 import { BarChart } from 'react-easy-chart'
 
-const margin = {top: 20, right: 40, bottom: 40, left: 40}
-
-const prepareData = (data) => data.map(item => Object.assign({'x': item.title, 'y': item.score}))
+const margin = { top: 20, right: 40, bottom: 40, left: 40 }
+const prepareData = data => data.map(item => ({ x: item.title, y: item.score }))
 
 export default ({ title, data, yDomainRange, chartWidth }) => {
   return (
     <div className='summary-wrapper'>
       {title && <h1>{title}</h1>}
-      {data && <BarChart data={prepareData(data)} colorBars axes grid height={400} width={chartWidth} yDomainRange={yDomainRange} margin={margin} />}
+      {data && <BarChart data={prepareData(data)} colorBars axes grid height='400' width={chartWidth} yDomainRange={yDomainRange} margin={margin} />}
       <style jsx>
         {`
           span {

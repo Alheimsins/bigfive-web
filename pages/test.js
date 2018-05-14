@@ -52,10 +52,10 @@ export default class extends Component {
     Router.pushRoute('test', { lang })
   }
 
-  async handleChange (e) {
+  async handleChange ({ target }) {
     let { answers, items, inventory, itemsPerPage } = this.state
-    const { domain, facet } = inventory.find(q => q.id === e.target.name)
-    answers[e.target.name] = { score: parseInt(e.target.value), domain, facet }
+    const { domain, facet } = inventory.find(q => q.id === target.name)
+    answers[target.name] = { score: parseInt(target.value), domain, facet }
     const progress = Math.round(Object.keys(answers).length / inventory.length * 100)
     const next = itemsPerPage === 1 && progress !== 100 ? false : items.filter(item => !answers[item.id]).length === 0
     this.setState({ answers, progress, next })
@@ -107,10 +107,10 @@ export default class extends Component {
     const done = progress === 100 && next
     const { handleChange, handleSubmit, handleBack, switchLanguage } = this
     return (
-      <div style={{textAlign: 'left'}}>
+      <div style={{ textAlign: 'left' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <LanguageBar switchLanguage={switchLanguage} selectedLanguage={lang} />
-          <div style={{textAlign: 'right', fontSize: '12px'}}>
+          <div style={{ textAlign: 'right', fontSize: '12px' }}>
             <Timer start={now} />
           </div>
         </div>
@@ -122,13 +122,13 @@ export default class extends Component {
             </div>
             <RadioGroup name={item.id} onChange={handleChange} checked={answers[item.id] && answers[item.id].score}>
               { item.choices.map(choice =>
-                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={{display: 'block'}} />
+                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={{ display: 'block' }} />
               )}
             </RadioGroup>
           </div>
         )}
         <div className='navigation'>
-          <div style={{marginRight: '10px'}}>
+          <div style={{ marginRight: '10px' }}>
             <Button type='submit' value='Back' onClick={handleBack} disabled={!previous} />
           </div>
           <div>

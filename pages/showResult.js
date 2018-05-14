@@ -87,12 +87,17 @@ export default class extends Component {
     this.getWidth = this.getWidth.bind(this)
   }
 
-  async componentDidMount () {
+  componentDidMount () {
     document.addEventListener('DOMContentLoaded', this.getWidth(), false)
-    window.addEventListener('resize', this.getWidth.bind(this))
+    window.addEventListener('resize', this.getWidth)
     if (this.props.results) {
       this.setState({ results: this.props.results })
     }
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('DOMContentLoaded', this.getWidth())
+    window.removeEventListener('resize', this.handleResize)
   }
 
   getWidth () {
