@@ -27,7 +27,7 @@ RUN npm install --production
 RUN npm run build
 
 # Expose 3000
-EXPOSE ${SERVER_PORT}
+EXPOSE 3000
 
 # Startup
 ENTRYPOINT npm run start

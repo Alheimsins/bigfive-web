@@ -1,23 +1,23 @@
 {
-  "name": "alheimsins-b5-web",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "name": "b5-johnson-120-ipip-neo-pi-r",
+  "description": "Module for returning Big Five Johnson 120 IPIP-NEO-PI-R items",
+  "version": "1.1.13",
+  "license": "MIT",
   "author": {
-    "name": "Jonas Enge",
-    "email": "jonas.enge@t-fk.no",
-    "url": "https://github.com/telemark"
+    "name": "Geir Gåsodden",
+    "email": "geir.gasodden@pythonia.no",
+    "url": "https://github.com/zrrrzzt"
   },
   "contributors": [
     {
-      "name": "Geir Gåsodden",
-      "email": "geir.gasodden@pythonia.no",
-      "url": "https://github.com/zrrrzzt"
+      "name": "Jonas Enge",
+      "email": "jonas.enge@gmail.com",
+      "url": "https://github.com/maccyber"
     }
   ],
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=8.11.1"
   },
   "scripts": {
     "test": "standard && nsp check && ava",
@@ -25,30 +25,22 @@
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now && now alias"
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
-  "keywords": [],
-  "license": "MIT",
-  "dependencies": {
-    "@alheimsins/b5-result-text": "github:alheimsins/b5-result-text",
-    "axios": "0.18.0",
-    "b5-calculate-score": "1.0.4",
-    "b5-johnson-120-ipip-neo-pi-r": "1.1.13",
-    "dotenv": "5.0.1",
-    "express": "4.16.3",
-    "iso-639-1": "2.0.3",
-    "mongojs": "2.5.0",
-    "next": "6.0.2",
-    "next-routes": "1.4.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-easy-chart": "1.0.0",
-    "react-icons": "2.2.7"
+  "keywords": [
+    "bigfive",
+    "personality",
+    "items",
+    "johnson-120-ipip-neo-pi-r"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r.git"
   },
+  "bugs": {
+    "url": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r/issues"
+  },
+  "homepage": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r#readme",
   "devDependencies": {
     "ava": "0.25.0",
     "coveralls": "3.0.1",
@@ -56,18 +48,7 @@
     "nyc": "11.7.3",
     "standard": "11.0.1"
   },
-  "now": {
-    "name": "bigfive-web",
-    "alias": "bigfive-test.com",
-    "type": "npm",
-    "engines": {
-      "node": "10.0.0"
-    }
-  },
-  "dotenv": "production.env",
-  "standard": {
-    "ignore": [
-      "/static/*.js"
-    ]
+  "dependencies": {
+    "knuth-shuffle": "1.0.8"
   }
 }
