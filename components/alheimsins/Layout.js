@@ -9,7 +9,7 @@ export default ({ user, children }) => (
       <meta property='og:title' content='BigFive personality test' />
       <meta property='og:description' content='Take a free, open-source BigFive personality test' />
       <meta property='og:image' content='/static/apple-icon-152x152.png' />
-      <title>BigFive personality test</title>
+      <title>Free open-source BigFive personality traits test - translated to English, Spanish, French, Norwegian, Icelandic, Dutch, Swedish, Croatian</title>
       <meta name='Description' content='Free, open-source Big Five personality test' />
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />

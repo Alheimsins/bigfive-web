@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Router, Link } from '../routes'
-import { Button, RadioGroup, Radio } from '../components/alheimsins'
+import { Select, Button, Field } from '../components/alheimsins'
 import { FaExternalLink } from 'react-icons/lib/fa'
 import ISO6391 from 'iso-639-1'
 import { getInfo } from 'b5-johnson-120-ipip-neo-pi-r'
@@ -20,6 +20,7 @@ export default class extends Component {
   }
 
   render () {
+    const languageList = languages.map(code => ({ code, name: ISO6391.getName(code) }))
     return (
       <div>
         <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgb(234, 234, 234)' }}>
@@ -41,11 +42,9 @@ export default class extends Component {
           <p>- Your spontaneous answer is usually the most accurate</p>
           <h2>Language</h2>
           <p>Select the language in which you want to see the test displayed in</p>
-          <RadioGroup name='languages' checked={this.state.lang} onChange={this.setLang}>
-            { languages.map(langCode =>
-              <Radio key={langCode} color='5' value={langCode} text={ISO6391.getName(langCode)} />
-            )}
-          </RadioGroup>
+          <Field name='Language'>
+            <Select name='languages' onChange={this.setLang} defaultValue='en' options={languageList} />
+          </Field>
           <div style={{ textAlign: 'center', paddingTop: '20px' }}>
             <Button value='start test' onClick={() => Router.pushRoute(`/test/${this.state.lang}`)} />
           </div>
