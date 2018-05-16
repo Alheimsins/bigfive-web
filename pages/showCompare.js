@@ -63,21 +63,20 @@ export default class extends Component {
   }
 
   componentDidMount () {
-    document.addEventListener('DOMContentLoaded', this.getWidth(), false)
     window.addEventListener('resize', this.getWidth)
     if (this.props.comparison) {
       this.setState({ comparison: this.props.comparison })
     }
+    this.getWidth()
   }
 
   componentWillUnmount () {
-    document.removeEventListener('DOMContentLoaded', this.getWidth())
     window.removeEventListener('resize', this.handleResize)
   }
 
   getWidth () {
-    const width = document.documentElement.clientWidth * 0.9
-    this.setState({chartWidth: width >= 500 ? width : 500})
+    const chartWidth = window.innerWidth * 0.8
+    this.setState({ chartWidth })
   }
 
   render () {

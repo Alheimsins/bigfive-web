@@ -3,6 +3,7 @@ import React from 'react'
 export default function Select (props) {
   const propTypes = {
     name: props.name,
+    id: props.name,
     defaultValue: props.defaultValue,
     onChange: props.onChange
   }

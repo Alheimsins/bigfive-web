@@ -7,7 +7,7 @@ export default ({ title, data, yDomainRange, chartWidth }) => {
   return (
     <div className='summary-wrapper'>
       {title && <h1>{title}</h1>}
-      {data && <BarChart data={prepareData(data)} colorBars axes grid height='400' width={chartWidth} yDomainRange={yDomainRange} margin={margin} />}
+      {data && <BarChart data={prepareData(data)} colorBars axes grid height={400} width={chartWidth} yDomainRange={yDomainRange} margin={margin} />}
       <style jsx>
         {`
           span {

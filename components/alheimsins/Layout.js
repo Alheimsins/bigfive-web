@@ -9,8 +9,9 @@ export default ({ user, children }) => (
       <meta property='og:title' content='BigFive personality test' />
       <meta property='og:description' content='Take a free, open-source BigFive personality test' />
       <meta property='og:image' content='/static/apple-icon-152x152.png' />
-      <title>Free open-source BigFive personality traits test - translated to English, Spanish, French, Norwegian, Icelandic, Dutch, Swedish, Croatian</title>
-      <meta name='Description' content='Free, open-source Big Five personality test' />
+      <meta name='theme-color' content='#000000' />
+      <title>Free open-source BigFive personality traits test - translated to multiple languages</title>
+      <meta name='Description' content='Free, open-source Big Five personality test - translated to multiple languages' />
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />
       <link rel='shortcut icon' href='/static/favicon.ico' />
@@ -69,6 +70,16 @@ export default ({ user, children }) => (
         }
         .main a {
           color: #bd10e0;
+        }
+        @media (max-width: 680px) {
+          .tick {
+            text-anchor: start;
+            writing-mode: tb;
+            padding-bottom: 100px;
+          }
+          .summary-wrapper svg {
+            padding-bottom: 90px;
+          }
         }
       `}
     </style>

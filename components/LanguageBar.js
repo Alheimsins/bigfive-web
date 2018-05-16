@@ -1,7 +1,7 @@
+import { Component } from 'react'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/lib/fa'
 const { getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
 const { languages } = getInfo()
-import { Fragment, Component } from 'react'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/lib/fa'
 
 export default class extends Component {
   constructor (props) {
@@ -21,12 +21,12 @@ export default class extends Component {
     return (
       <div className='lang'>
         {
-          !this.state.toggleLang
-            && languages.filter(langCode => langCode === 'en' || selectedLanguage === langCode).map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span> )
+          !this.state.toggleLang &&
+            languages.filter(langCode => langCode === 'en' || selectedLanguage === langCode).map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>)
         }
         {
-          this.state.toggleLang
-            && languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>)
+          this.state.toggleLang &&
+            languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>)
         }
         <span className='language' onClick={this.toggleLang}> { this.state.toggleLang ? <FaAngleLeft /> : <FaAngleRight /> }</span>
         <style jsx>

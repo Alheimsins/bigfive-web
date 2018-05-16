@@ -12,7 +12,7 @@ const { publicRuntimeConfig: { URL } } = getConfig()
 
 const httpInstance = axios.create({
   baseURL: URL,
-  timeout: 5000
+  timeout: 8000
 })
 
 const getResultFromId = async id => {
@@ -88,21 +88,20 @@ export default class extends Component {
   }
 
   componentDidMount () {
-    document.addEventListener('DOMContentLoaded', this.getWidth(), false)
     window.addEventListener('resize', this.getWidth)
     if (this.props.results) {
       this.setState({ results: this.props.results })
     }
+    this.getWidth()
   }
 
   componentWillUnmount () {
-    document.removeEventListener('DOMContentLoaded', this.getWidth())
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.getWidth)
   }
 
   getWidth () {
-    const width = document.documentElement.clientWidth * 0.9
-    this.setState({chartWidth: width >= 500 ? width : 500})
+    const chartWidth = window.innerWidth * 0.8
+    this.setState({ chartWidth })
   }
 
   render () {
@@ -110,7 +109,7 @@ export default class extends Component {
     const { id } = this.props.query
     const currentUrl = URL + '/result/' + id
     return (
-      <div>
+      <Fragment>
         <h2>Result</h2>
         {
           results &&
@@ -120,7 +119,7 @@ export default class extends Component {
             <Resume data={results} width={chartWidth} />
           </Fragment>
         }
-      </div>
+      </Fragment>
     )
   }
 }

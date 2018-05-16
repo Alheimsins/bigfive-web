@@ -7,6 +7,7 @@ const routes = require('./routes')
 const mongo = require('mongojs')
 const config = require('./config')
 const validMongoId = require('./lib/valid-mongoid')
+const { join } = require('path')
 
 const app = next({ dev })
 const handler = routes.getRequestHandler(app)
@@ -19,6 +20,11 @@ app.prepare().then(() => {
   const collection = db.collection(config.DB_COLLECTION)
 
   server.use(express.json())
+
+  server.get('/service-worker.js', (req, res) => {
+    const filePath = join(__dirname, '.next', 'service-worker.js')
+    return app.serveStatic(req, res, filePath)
+  })
 
   server.get('/api/login', (req, res) => {
     res.redirect('/')

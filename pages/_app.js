@@ -1,6 +1,12 @@
 import { Layout } from '../components/alheimsins'
-import App, {Container} from 'next/app'
+import App, { Container } from 'next/app'
 import React from 'react'
+import { Router } from '../routes'
+import * as gtag from '../lib/gtag'
+
+Router.onRouteChangeComplete = url => {
+  gtag.pageview(url)
+}
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx, ctx: { query, req } }) {
