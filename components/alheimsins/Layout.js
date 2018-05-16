@@ -71,16 +71,6 @@ export default ({ user, children }) => (
         .main a {
           color: #bd10e0;
         }
-        @media (max-width: 680px) {
-          .tick {
-            text-anchor: start;
-            writing-mode: tb;
-            padding-bottom: 100px;
-          }
-          .summary-wrapper svg {
-            padding-bottom: 90px;
-          }
-        }
       `}
     </style>
   </div>

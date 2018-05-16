@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react'
 import axios from 'axios'
 import getConfig from 'next/config'
-import Summary from '../components/Summary'
+import Summary from '../components/SummaryCompare'
 import SocialShare from '../components/SocialShare'
 import repackResults from '../lib/repack-results'
 import base64url from '../lib/base64url'
@@ -22,26 +22,24 @@ const getCompareFromId = async id => {
 }
 
 const Comparison = ({data, chartWidth}) => {
+  const header = data[0].scores.map(({ title }) => ({ label: title, type: 'number' }))
+  const domainScores = data.map(result => ([result.title, ...result.scores.map(({ score }) => score)]))
+  const domains = data.map(result => result.title)
+  const facets = data.map(({ facets }) => ([ ...facets ]))
+  const getFacetScores = i => facets[i].map(({ title, scores }) => [title, ...scores.map(({ score }) => score)])
   return (
-    <div>
-      <Summary title={data.title} data={data.scores} yDomainRange={[0, 120]} chartWidth={chartWidth} />
-      <p>{data.description}</p>
-      <Facets facets={data.facets} chartWidth={chartWidth} />
-    </div>
+    <Fragment>
+      <Summary data={domainScores} header={header} vAxis={{ minValue: 24, maxValue: 120 }} chartWidth={chartWidth} title='domain' />
+      {
+        domains.map((domain, i) => (
+          <Fragment key={i}>
+            <h1>{domain}</h1>
+            <Summary data={getFacetScores(i)} header={header} vAxis={{ minValue: 4, maxValue: 20 }} chartWidth={chartWidth} title={domain} />
+          </Fragment>
+        ))
+      }
+    </Fragment>
   )
-}
-
-const FacetScores = ({data, chartWidth}) => {
-  return (
-    <div>
-      <Summary title={data.title} data={data.scores} yDomainRange={[0, 20]} chartWidth={chartWidth} />
-      <p>{data.description}</p>
-    </div>
-  )
-}
-
-const Facets = ({facets, chartWidth}) => {
-  return facets.map((facet, index) => <FacetScores data={facet} chartWidth={chartWidth} key={index} />)
 }
 
 export default class extends Component {
@@ -56,8 +54,7 @@ export default class extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      chartWidth: 600,
-      people: []
+      chartWidth: 600
     }
     this.getWidth = this.getWidth.bind(this)
   }
@@ -84,18 +81,16 @@ export default class extends Component {
     const { id } = this.props.query
     const currentUrl = URL + '/compare/' + id
     return (
-      <div>
+      <Fragment>
         <h2>Compare</h2>
         {
           comparison &&
             <Fragment>
               <SocialShare url={currentUrl} />
-              <div>
-                {comparison.map((domain, index) => <Comparison data={domain} chartWidth={chartWidth} key={index} />)}
-              </div>
+              <Comparison data={comparison} chartWidth={chartWidth} />
             </Fragment>
         }
-      </div>
+      </Fragment>
     )
   }
 }

@@ -28,11 +28,11 @@ const getResultFromId = async id => {
 }
 
 const Facet = ({ data }) => (
-  <div>
+  <Fragment>
     <h2>{data.title}</h2>
     <p>Score: {data.score}/20 - {data.scoreText}</p>
     <p><span dangerouslySetInnerHTML={{__html: data.text}} /></p>
-  </div>
+  </Fragment>
 )
 
 const Domain = ({ data, chartWidth }) => (
@@ -42,7 +42,7 @@ const Domain = ({ data, chartWidth }) => (
     <p>Score: {data.score}/120 - {data.scoreText}</p>
     <p><strong>{data.text}</strong></p>
     <p><span dangerouslySetInnerHTML={{__html: data.description}} /></p>
-    {data && data.facets && <Summary data={data.facets} yDomainRange={[0, 20]} chartWidth={chartWidth} />}
+    {data && data.facets && <Summary data={data.facets} vAxis={{minValue: 0, maxValue: 20}} title={data.title} chartWidth={chartWidth} />}
     {data && data.facets && data.facets.map((facet, index) => <Facet data={facet} key={index} />)}
     <style jsx>
       {`
@@ -50,10 +50,7 @@ const Domain = ({ data, chartWidth }) => (
           margin-right: 10px;
         }
         .domain-wrapper {
-          border-radius: 0;
-          background-color: #FFF;
           box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
-          color: black;
           margin-top: 10px;
           padding: 10px;
           text-align: left;
@@ -63,10 +60,20 @@ const Domain = ({ data, chartWidth }) => (
   </div>
 )
 
-const Resume = ({ data, width }) => (
+const Resume = ({ data, chartWidth }) => (
   <div>
-    {data && <Summary data={data} yDomainRange={[24, 120]} chartWidth={width} />}
-    {data && data.map((domain, index) => <Domain data={domain} key={index} chartWidth={width} />)}
+    {data && <div className='domains'><Summary data={data} vAxis={{minValue: 0, maxValue: 120}} chartWidth={chartWidth} /></div>}
+    {data && data.map((domain, index) => <Domain data={domain} key={index} chartWidth={chartWidth} />)}
+    <style jsx>
+      {`
+        .domains {
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
+          margin-top: 10px;
+          padding: 10px;
+          text-align: left;
+        }
+      `}
+    </style>
   </div>
 )
 
@@ -100,7 +107,7 @@ export default class extends Component {
   }
 
   getWidth () {
-    const chartWidth = window.innerWidth * 0.8
+    const chartWidth = window.innerWidth * 0.85
     this.setState({ chartWidth })
   }
 
@@ -116,7 +123,7 @@ export default class extends Component {
           <Fragment>
             <SocialShare url={currentUrl} />
             { id && <Fragment>Save the following ID to see the results later or compare yourself to others - <Code>{ id }</Code></Fragment> }
-            <Resume data={results} width={chartWidth} />
+            <Resume data={results} chartWidth={chartWidth} />
           </Fragment>
         }
       </Fragment>
