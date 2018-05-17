@@ -1,4 +1,5 @@
 import { Chart } from 'react-google-charts'
+import { Loading } from './alheimsins'
 
 export default ({ title, data, header, vAxis, chartWidth }) => (
   <Chart
@@ -10,5 +11,6 @@ export default ({ title, data, header, vAxis, chartWidth }) => (
     height='500px'
     graph_id={title}
     legend_toggle={false}
+    loader={<Loading />}
   />
 )
