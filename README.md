@@ -11,6 +11,10 @@ See it live @ [bigfive-test.com](https://bigfive-test.com)
 
 Written in [nodejs](https://nodejs.org) using the [next.js](https://github.com/zeit/next.js) and [micro](https://github.com/zeit/micro) framework
 
+## Preview
+
+![](https://media.giphy.com/media/k83RlkC1s3bhdBJ8Yb/giphy.gif)
+
 ## Installation
 
 Download and install [nodejs](https://nodejs.org) and [git](https://git-scm.com/downloads)
