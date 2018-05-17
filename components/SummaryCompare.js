@@ -1,5 +1,5 @@
 import { Chart } from 'react-google-charts'
-import { Loading } from './alheimsins'
+import { Loading } from './alheimsins'
 
 export default ({ title, data, header, vAxis, chartWidth }) => (
   <Chart
