@@ -21,6 +21,11 @@ app.prepare().then(() => {
 
   server.use(express.json())
 
+  server.get('/sitemap.xml', (req, res) => {
+    const filePath = join(__dirname, 'static', 'sitemap.xml')
+    return app.serveStatic(req, res, filePath)
+  })
+
   server.get('/service-worker.js', (req, res) => {
     const filePath = join(__dirname, '.next', 'service-worker.js')
     return app.serveStatic(req, res, filePath)
