@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Code } from '../components/alheimsins'
 import getConfig from 'next/config'
 import Summary from '../components/Summary'
+import Domain from '../components/Domain'
 import SocialShare from '../components/SocialShare'
 import validMongoId from '../lib/valid-mongoid'
 import formatId from '../lib/format-id'
@@ -26,39 +27,6 @@ const getResultFromId = async id => {
     throw error
   }
 }
-
-const Facet = ({ data }) => (
-  <Fragment>
-    <h2>{data.title}</h2>
-    <p>Score: {data.score}/20 - {data.scoreText}</p>
-    <p><span dangerouslySetInnerHTML={{__html: data.text}} /></p>
-  </Fragment>
-)
-
-const Domain = ({ data, chartWidth }) => (
-  <div className='domain-wrapper'>
-    <h1>{data.title}</h1>
-    <p><em>{data.shortDescription}</em></p>
-    <p>Score: {data.score}/120 - {data.scoreText}</p>
-    <p><strong>{data.text}</strong></p>
-    <p><span dangerouslySetInnerHTML={{__html: data.description}} /></p>
-    {data && data.facets && <Summary data={data.facets} vAxis={{minValue: 0, maxValue: 20}} title={data.title} chartWidth={chartWidth} />}
-    {data && data.facets && data.facets.map((facet, index) => <Facet data={facet} key={index} />)}
-    <style jsx>
-      {`
-        span {
-          margin-right: 10px;
-        }
-        .domain-wrapper {
-          box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
-          margin-top: 10px;
-          padding: 10px;
-          text-align: left;
-        }
-      `}
-    </style>
-  </div>
-)
 
 const Resume = ({ data, chartWidth }) => (
   <div>
