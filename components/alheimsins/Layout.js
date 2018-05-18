@@ -5,13 +5,20 @@ import Footer from './Footer'
 export default ({ user, children }) => (
   <div className='container'>
     <Head>
+      <title>Free open-source BigFive personality traits test - translated to multiple languages</title>
       <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, width=device-width' />
-      <meta property='og:title' content='BigFive personality test' />
-      <meta property='og:description' content='Take a free, open-source BigFive personality test' />
+      <meta property='og:title' content='Want to take a free Big Five personality test?' />
+      <meta property='og:description' content='Take a free, open-source Big Five personality test - translated to multiple languages. Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your girlfriend, colleagues, friends or family.' />
       <meta property='og:image' content='/static/apple-icon-152x152.png' />
       <meta name='theme-color' content='#000000' />
-      <title>Free open-source BigFive personality traits test - translated to multiple languages</title>
-      <meta name='Description' content='Free, open-source Big Five personality test - translated to multiple languages' />
+      <meta name='twitter:card' content='summary' />
+      <meta name='twitter:creator' content='@maccyber' />
+      <meta name='twitter:title' content='Want to take a free Big Five personality test?' />
+      <meta name='twitter:description' content='Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your girlfriend, colleagues, friends or family.' />
+      <meta name='twitter:image' content='https://bigfive-test.com/static/apple-icon.png' />
+      <meta name='description' content='Take a free, open-source Big Five personality test - translated to multiple languages. Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your girlfriend, colleagues, friends or family.' />
+      <meta name='keywords' content='BigFive, personality traits, survey, compare' />
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: `{ "@context": "http://schema.org/", "@type": "WebSite", "name": "BigFive Test", "url": "https://bigfive-test.com" }` }} />
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />
       <link rel='shortcut icon' href='/static/favicon.ico' />
