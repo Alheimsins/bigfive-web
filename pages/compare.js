@@ -20,8 +20,10 @@ export default class extends Component {
     this.handleCompare = this.handleCompare.bind(this)
   }
 
-  handleChange (e) {
-    this.setState({[e.target.name]: e.target.value})
+  handleChange ({ target }) {
+    const id = target.value
+    const error = id && target.name === 'id' && !validMongoId(formatId(id)) ? 'Not a valid ID' : false
+    this.setState({ [target.name]: id, error })
   }
 
   handleDelete (num) {
@@ -44,7 +46,7 @@ export default class extends Component {
   }
 
   render () {
-    const { name, people, id } = this.state
+    const { name, people, id, error } = this.state
     const formattedId = formatId(id)
     return (
       <div>
@@ -65,9 +67,10 @@ export default class extends Component {
             <Field name='Name'>
               <InputText name='name' value={name} onChange={this.handleChange} placeholder='Name for comparison' autoComplete='off' autoFocus />
             </Field>
-            <Field name='ID'>
+            <Field name='ID' style={{ marginBottom: 0 }}>
               <InputText name='id' value={id} onChange={this.handleChange} placeholder='URL or id for comparison' autoComplete='off' />
             </Field>
+            { error && <p style={{ fontSize: '10px', color: '#ff0033' }}>{error}</p> }
             <Button value='Add' type='submit' disabled={!validMongoId(formattedId) || !id || !name} />
           </form>
           <style jsx>

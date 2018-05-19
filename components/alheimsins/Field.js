@@ -1,9 +1,9 @@
-export default ({ name, children }) => (
-  <div className='field'>
-    <label htmlFor={name}>
-      {name.toUpperCase()}:
+export default (props) => (
+  <div className='field' style={{...props.style}}>
+    <label htmlFor={props.name}>
+      {props.name.toUpperCase()}:
     </label>
-    { children }
+    { props.children }
     <style jsx>
       {`
         .field {
