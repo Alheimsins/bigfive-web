@@ -20,7 +20,7 @@ export default class extends Component {
     this.handleCompare = this.handleCompare.bind(this)
   }
 
-  handleChange ({ target }) {
+  handleChange ({ target }) {
     const id = target.value
     const error = id && target.name === 'id' && !validMongoId(formatId(id)) ? 'Not a valid ID' : false
     this.setState({ [target.name]: id, error })

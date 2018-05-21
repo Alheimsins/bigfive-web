@@ -40,7 +40,7 @@ export default class extends Component {
             <Field name='ID' style={{ marginBottom: 0 }}>
               <InputTextUncontrolled name='id' onChange={handleInputChange} placeholder='URL or id for result' autoFocus />
             </Field>
-             { error && <p style={{ fontSize: '10px', color: '#ff0033' }}>{error}</p> }
+            { error && <p style={{ fontSize: '10px', color: '#ff0033' }}>{error}</p> }
             <Button value='Get results' type='submit' disabled={disabledButton} />
           </form>
         </div>

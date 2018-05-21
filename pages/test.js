@@ -4,6 +4,8 @@ import LanguageBar from '../components/LanguageBar'
 import { Button, ProgressBar, RadioGroup, Radio, Timer } from '../components/alheimsins'
 import getConfig from 'next/config'
 import axios from 'axios'
+import { FaInfoCircle } from 'react-icons/lib/fa'
+import { populateData, restoreData, getProgress, clearItems } from '../lib/localStorageStore'
 const { publicRuntimeConfig } = getConfig()
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
@@ -37,12 +39,24 @@ export default class extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleBack = this.handleBack.bind(this)
     this.switchLanguage = this.switchLanguage.bind(this)
+    this.clearAnswers = this.clearAnswers.bind(this)
   }
 
   componentDidMount () {
     const itemsPerPage = window.innerWidth < 600 ? 1 : 4
-    const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
-    this.setState({ items, itemsPerPage })
+    if (getProgress()) {
+      const data = restoreData()
+      this.setState({ ...data, itemsPerPage, restore: true })
+      console.log('Your state are restored from LocalStorage')
+    } else {
+      const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
+      this.setState({ items, itemsPerPage })
+    }
+  }
+
+  clearAnswers () {
+    clearItems()
+    window.location.reload(true)
   }
 
   switchLanguage (lang) {
@@ -53,12 +67,13 @@ export default class extends Component {
   }
 
   async handleChange ({ target }) {
-    let { answers, items, inventory, itemsPerPage } = this.state
+    let { answers, items, inventory, itemsPerPage, previous, position } = this.state
     const { domain, facet } = inventory.find(q => q.id === target.name)
     answers[target.name] = { score: parseInt(target.value), domain, facet }
     const progress = Math.round(Object.keys(answers).length / inventory.length * 100)
     const next = itemsPerPage === 1 && progress !== 100 ? false : items.filter(item => !answers[item.id]).length === 0
     this.setState({ answers, progress, next })
+    populateData({ answers, progress, next, previous, position, items })
     if (itemsPerPage === 1 && progress !== 100) {
       await sleep(700)
       await this.handleSubmit()
@@ -75,6 +90,7 @@ export default class extends Component {
     window.scrollTo(0, 0)
     const { items, finished, position } = getItems(this.state.position, this.state.itemsPerPage, this.state.inventory).next()
     if (finished) {
+      clearItems()
       const answers = this.state.answers
       const choices = Object.keys(answers).reduce((prev, current) => {
         const choice = answers[current]
@@ -98,12 +114,13 @@ export default class extends Component {
       }
     } else {
       const next = items.filter(item => !this.state.answers[item.id]).length === 0
-      this.setState({ items, position, next, previous: true })
+      this.setState({ items, position, next, previous: true, restore: false })
+      populateData({ progress: this.state.progress, next, previous: true, answers: this.state.answers, position, items })
     }
   }
 
   render () {
-    const { items, progress, answers, next, previous, lang, now } = this.state
+    const { items, progress, answers, next, previous, lang, now, restore } = this.state
     const done = progress === 100 && next
     const { handleChange, handleSubmit, handleBack, switchLanguage } = this
     return (
@@ -115,6 +132,9 @@ export default class extends Component {
           </div>
         </div>
         <ProgressBar progress={progress} />
+        {
+          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state are restored from LocalStorage. Click here to start over again.</p>
+        }
         { items.map(item =>
           <div key={item.id} className='item'>
             <div className='question'>
