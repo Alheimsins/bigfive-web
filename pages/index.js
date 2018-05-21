@@ -26,7 +26,7 @@ export default class extends Component {
         <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgb(234, 234, 234)' }}>
           <h1>BigFive personality test</h1>
         </div>
-        <div style={{ maxWidth: '650px', textAlign: 'left', margin: 'auto', fontSize: '14px', width: '100%' }}>
+        <div style={{ textAlign: 'left', margin: 'auto', fontSize: '14px', width: '100%' }}>
           <p>This is a <b>free</b>, open-source personality test to measure the big five personality traits.
           </p>
           <p>
