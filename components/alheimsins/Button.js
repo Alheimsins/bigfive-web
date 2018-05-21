@@ -24,6 +24,7 @@ export default (props) => {
             background: ${props.background || 'black'};
             border-radius: 5px;
             cursor: pointer;
+            -webkit-appearance: none;
           }
           input:disabled {
             background: #eaeaea;

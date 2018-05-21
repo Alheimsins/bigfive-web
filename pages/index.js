@@ -46,7 +46,7 @@ export default class extends Component {
             <Select name='languages' onChange={this.setLang} defaultValue='en' options={languageList} />
           </Field>
           <div style={{ textAlign: 'center', paddingTop: '20px' }}>
-            <Button value='start test' onClick={() => Router.pushRoute(`/test/${this.state.lang}`)} />
+            <Button value='start test' onClick={() => Router.pushRoute(`/test/${this.state.lang}`)} background='rgb(255, 0, 128)' border='1px solid rgb(255, 0, 128)' />
           </div>
         </div>
       </div>
