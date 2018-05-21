@@ -47,7 +47,7 @@ export default class extends Component {
     if (getProgress()) {
       const data = restoreData()
       this.setState({ ...data, itemsPerPage, restore: true })
-      console.log('Your state are restored from LocalStorage')
+      console.log('Your state is restored from LocalStorage')
     } else {
       const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
       this.setState({ items, itemsPerPage })
@@ -133,7 +133,7 @@ export default class extends Component {
         </div>
         <ProgressBar progress={progress} />
         {
-          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state are restored from LocalStorage. Click here to start over again.</p>
+          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
         }
         { items.map(item =>
           <div key={item.id} className='item'>
