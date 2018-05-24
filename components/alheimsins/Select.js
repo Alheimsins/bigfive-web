@@ -4,8 +4,7 @@ export default function Select (props) {
   const propTypes = {
     name: props.name,
     id: props.name,
-    defaultValue: props.defaultValue,
-    onChange: props.onChange
+    defaultValue: props.defaultValue
   }
 
   return (

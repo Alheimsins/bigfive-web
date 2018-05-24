@@ -92,6 +92,7 @@ export default class extends Component {
             <SocialShare url={currentUrl} />
             { id && <Fragment>Save the following ID to see the results later or compare yourself to others - <Code>{ id }</Code></Fragment> }
             <Resume data={results} chartWidth={chartWidth} />
+            <SocialShare url={currentUrl} />
           </Fragment>
         }
       </Fragment>

@@ -5,7 +5,7 @@ import { Button, ProgressBar, RadioGroup, Radio, Timer } from '../components/alh
 import getConfig from 'next/config'
 import axios from 'axios'
 import { FaInfoCircle } from 'react-icons/lib/fa'
-import { populateData, restoreData, getProgress, clearItems } from '../lib/localStorageStore'
+import { populateData, restoreData, getProgress, clearItems, setItem } from '../lib/localStorageStore'
 const { publicRuntimeConfig } = getConfig()
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
@@ -108,6 +108,7 @@ export default class extends Component {
       }
       try {
         const { data } = await httpInstance.post('/api/save', result)
+        setItem('result', data._id)
         Router.pushRoute('showResult', { id: data._id })
       } catch (error) {
         throw error

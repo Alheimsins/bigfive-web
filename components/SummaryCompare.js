@@ -4,8 +4,7 @@ import { Loading } from './alheimsins'
 export default ({ title, data, header, vAxis, chartWidth }) => (
   <Chart
     chartType='ColumnChart'
-    columns={[{label: 'domain', type: 'string'}, ...header]}
-    rows={data}
+    data={[['domain', ...header], ...data]}
     options={{ vAxis }}
     width={chartWidth}
     height='500px'

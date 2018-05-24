@@ -5,6 +5,8 @@ if (dev) {
 const next = require('next')
 const routes = require('./routes')
 const mongo = require('mongojs')
+const helmet = require('helmet')
+const requestCountry = require('request-country')
 const config = require('./config')
 const validMongoId = require('./lib/valid-mongoid')
 const { join } = require('path')
@@ -19,7 +21,11 @@ app.prepare().then(() => {
   const db = mongo(config.DB_CONNECTION)
   const collection = db.collection(config.DB_COLLECTION)
 
+  server.use(helmet())
   server.use(express.json())
+  server.use(requestCountry.middleware({
+    privateIpCountry: 'en'
+  }))
 
   server.get('/sitemap.xml', (req, res) => {
     const filePath = join(__dirname, 'static', 'sitemap.xml')

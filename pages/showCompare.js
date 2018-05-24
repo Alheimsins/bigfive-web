@@ -24,17 +24,19 @@ const getCompareFromId = async id => {
 const Comparison = ({data, chartWidth}) => {
   const header = data[0].scores.map(({ title }) => ({ label: title, type: 'number' }))
   const domainScores = data.map(result => ([result.title, ...result.scores.map(({ score }) => score)]))
-  const domains = data.map(result => result.title)
+  const domains = data.map(result => ({ title: result.title, description: result.description }))
   const facets = data.map(({ facets }) => ([ ...facets ]))
   const getFacetScores = i => facets[i].map(({ title, scores }) => [title, ...scores.map(({ score }) => score)])
   return (
     <Fragment>
+      <h1>Overview</h1>
       <Summary data={domainScores} header={header} vAxis={{ minValue: 24, maxValue: 120 }} chartWidth={chartWidth} title='domain' />
       {
         domains.map((domain, i) => (
           <Fragment key={i}>
-            <h1>{domain}</h1>
-            <Summary data={getFacetScores(i)} header={header} vAxis={{ minValue: 4, maxValue: 20 }} chartWidth={chartWidth} title={domain} />
+            <h1>{domain.title}</h1>
+            <p>{domain.description}</p>
+            <Summary data={getFacetScores(i)} header={header} vAxis={{ minValue: 4, maxValue: 20 }} chartWidth={chartWidth} title={domain.title} />
           </Fragment>
         ))
       }
@@ -88,6 +90,7 @@ export default class extends Component {
             <Fragment>
               <SocialShare url={currentUrl} />
               <Comparison data={comparison} chartWidth={chartWidth} />
+              <SocialShare url={currentUrl} />
             </Fragment>
         }
       </Fragment>
