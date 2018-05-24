@@ -44,7 +44,7 @@
     "iso-639-1": "2.0.3",
     "mongojs": "2.5.0",
     "next": "6.0.3",
-    "next-offline": "2.7.0",
+    "next-offline": "2.7.1",
     "next-routes": "1.4.2",
     "react": "16.4.0",
     "react-dom": "16.4.0",
