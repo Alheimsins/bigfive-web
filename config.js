@@ -2,5 +2,8 @@ module.exports = {
   JWT_SECRET: process.env.JWT_SECRET || 'Gibberish, jibberish, jibber-jabber and gobbledygook',
   DB_CONNECTION: process.env.DB_CONNECTION || 'username:password@localhost/bigfive',
   DB_COLLECTION: process.env.DB_COLLECTION || 'results',
-  URL: process.env.URL || 'http://localhost:3000'
+  URL: process.env.URL || 'http://localhost:3000',
+  clientID: process.env.CLIENT_ID || 'client id',
+  clientSecret: process.env.CLIENT_SECRET || 'client secret',
+  callbackURL: process.env.CALLBACK_URL || 'http://localhost:3000/callback'
 }
