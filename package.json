@@ -46,8 +46,8 @@
     "next": "6.0.3",
     "next-offline": "2.7.2",
     "next-routes": "1.4.2",
-    "react": "16.4.0",
-    "react-dom": "16.4.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
     "react-google-charts": "1.6.6",
     "react-icons": "2.2.7",
     "request-country": "0.1.0"
