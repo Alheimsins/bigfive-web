@@ -35,6 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@alheimsins/b5-result-text": "github:alheimsins/b5-result-text",
+    "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.18.0",
     "b5-calculate-score": "1.0.4",
     "b5-johnson-120-ipip-neo-pi-r": "1.1.21",
@@ -48,7 +49,6 @@
     "next-routes": "1.4.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "react-google-charts": "github:maccyber/react-google-charts",
     "react-icons": "2.2.7",
     "request-country": "0.1.0"
   },

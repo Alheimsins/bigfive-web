@@ -1,4 +1,4 @@
-import { Chart } from 'react-google-charts'
+import { Chart } from '@alheimsins/react-google-charts'
 import { Loading } from './alheimsins'
 
 const COLORS = [
