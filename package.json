@@ -1,6 +1,6 @@
 {
   "name": "alheimsins-b5-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "private": true,
   "author": {
@@ -56,7 +56,7 @@
     "ava": "0.25.0",
     "coveralls": "3.0.2",
     "nyc": "13.0.1",
-    "standard": "11.0.1"
+    "standard": "12.0.1"
   },
   "now": {
     "name": "bigfive-web",

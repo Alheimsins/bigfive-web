@@ -5,7 +5,7 @@ const links = [
   {
     url: 'https://alheimsins.net',
     name: 'alheimsins',
-    icon: Logo({color: 'white'}),
+    icon: Logo({ color: 'white' }),
     color: 'white'
   },
   {

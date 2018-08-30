@@ -3,7 +3,7 @@ export default ({ progress }) => (
     <span className='percent'>
       {progress}%
     </span>
-    <div style={{width: progress + '%'}} className='bar' />
+    <div style={{ width: progress + '%' }} className='bar' />
     <style>
       {`
         .progress {

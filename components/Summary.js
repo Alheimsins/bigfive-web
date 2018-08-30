@@ -29,8 +29,8 @@ const prepareData = data => data.map((item, i) => ([ item.title, item.score, COL
 export default ({ title, data, vAxis, chartWidth }) => (
   <Chart
     chartType='ColumnChart'
-    data={[[{type: 'string'}, {type: 'number'}, {role: 'style'}], ...prepareData(data)]}
-    options={{vAxis, legend: 'none'}}
+    data={[[{ type: 'string' }, { type: 'number' }, { role: 'style' }], ...prepareData(data)]}
+    options={{ vAxis, legend: 'none' }}
     width={chartWidth}
     height='500px'
     graph_id={title}

@@ -41,7 +41,7 @@ export default class extends Component {
   }
 
   tick () {
-    this.setState({elapsed: new Date() - this.props.start})
+    this.setState({ elapsed: new Date() - this.props.start })
   }
 
   render () {

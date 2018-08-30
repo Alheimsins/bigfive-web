@@ -4,7 +4,7 @@ import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/lib/md
 
 export default class Radio extends Component {
   render () {
-    const {name, checked, onChange} = this.context.radioGroup
+    const { name, checked, onChange } = this.context.radioGroup
     const choosen = checked === this.props.value
     return [
       <label key={this.props.value}>

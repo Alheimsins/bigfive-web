@@ -22,7 +22,7 @@ const getResultFromId = async id => {
     if (!validMongoId(formattedId)) throw new Error('Invalid id')
     const { data } = await httpInstance.get(`/api/get/${formattedId}`)
     const scores = calculateScore(data)
-    return getResult({scores, lang: data.lang || 'en'})
+    return getResult({ scores, lang: data.lang || 'en' })
   } catch (error) {
     throw error
   }
@@ -30,7 +30,7 @@ const getResultFromId = async id => {
 
 const Resume = ({ data, chartWidth }) => (
   <div>
-    {data && <div className='domains'><Summary data={data} vAxis={{minValue: 0, maxValue: 120}} chartWidth={chartWidth} /></div>}
+    {data && <div className='domains'><Summary data={data} vAxis={{ minValue: 0, maxValue: 120 }} chartWidth={chartWidth} /></div>}
     {data && data.map((domain, index) => <Domain data={domain} key={index} chartWidth={chartWidth} />)}
     <style jsx>
       {`

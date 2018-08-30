@@ -13,7 +13,7 @@ export default ({ user, info }) => (
       <div className='nav-right'>
         { user
           ? <span>logged in as <b>{user}</b></span>
-          : <a href='/api/login' style={{color: 'black'}}>LOGIN</a>
+          : <a href='/api/login' style={{ color: 'black' }}>LOGIN</a>
         }
       </div>
       { info && <div className='nav-info'>{info}</div> }

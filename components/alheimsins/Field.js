@@ -1,5 +1,5 @@
 export default (props) => (
-  <div className='field' style={{...props.style}}>
+  <div className='field' style={{ ...props.style }}>
     <label htmlFor={props.name}>
       {props.name.toUpperCase()}:
     </label>

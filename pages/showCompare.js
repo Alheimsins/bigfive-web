@@ -21,7 +21,7 @@ const getCompareFromId = async id => {
   return repackResults(scores, scores[0].data.lang)
 }
 
-const Comparison = ({data, chartWidth}) => {
+const Comparison = ({ data, chartWidth }) => {
   const header = data[0].scores.map(({ title }) => ({ label: title, type: 'number' }))
   const domainScores = data.map(result => ([result.title, ...result.scores.map(({ score }) => score)]))
   const domains = data.map(result => ({ title: result.title, description: result.description }))
