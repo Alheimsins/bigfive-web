@@ -4,7 +4,7 @@ import LanguageBar from '../components/LanguageBar'
 import { Button, ProgressBar, RadioGroup, Radio, Timer } from '../components/alheimsins'
 import getConfig from 'next/config'
 import axios from 'axios'
-import { FaInfoCircle } from 'react-icons/lib/fa'
+import { FaInfoCircle } from 'react-icons/fa'
 import { populateData, restoreData, getProgress, clearItems, setItem } from '../lib/localStorageStore'
 const { publicRuntimeConfig } = getConfig()
 const httpInstance = axios.create({

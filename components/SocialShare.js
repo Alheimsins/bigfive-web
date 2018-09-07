@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/lib/fa'
+import { FaFacebook, FaTwitter, FaGooglePlus } from 'react-icons/fa'
 
 export default ({ url }) => (
   <p className='share'>

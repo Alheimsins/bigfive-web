@@ -5,7 +5,7 @@ import validMongoId from '../lib/valid-mongoid'
 import formatId from '../lib/format-id'
 import { Code, Field, InputTextUncontrolled, Button } from '../components/alheimsins'
 import { getItem, clearItems } from '../lib/localStorageStore'
-import { MdDelete } from 'react-icons/lib/md'
+import { MdDelete } from 'react-icons/md'
 const { publicRuntimeConfig: { URL } } = getConfig()
 
 export default class extends Component {

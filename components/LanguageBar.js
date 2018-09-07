@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/lib/fa'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 const { getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
 const { languages } = getInfo()
 

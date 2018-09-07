@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/lib/md'
+import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/md'
 
 export default class Radio extends Component {
   render () {

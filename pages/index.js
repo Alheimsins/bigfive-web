@@ -1,6 +1,6 @@
 import { Router, Link } from '../routes'
 import { Select, Button, Field } from '../components/alheimsins'
-import { FaExternalLink } from 'react-icons/lib/fa'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import ISO6391 from 'iso-639-1'
 import { getInfo } from 'b5-johnson-120-ipip-neo-pi-r'
 const { languages } = getInfo()
@@ -23,8 +23,9 @@ export default (props) => {
         <p>This is a <b>free</b>, open-source personality test to measure the big five personality traits.
         </p>
         <p>
-        Tests and evaluation is gathered from <a href='http://ipip.ori.org' rel='noopener' target='_blank'>ipip.ori.org</a><FaExternalLink size='8' style={{ verticalAlign: 'top' }} />, the
-        inventory is from <i>Johnson's (2014) 120-item IPIP NEO-PI-R</i>.
+          Tests and evaluation is gathered from <a href='http://ipip.ori.org' rel='noopener' target='_blank'>ipip.ori.org</a>
+          <FaExternalLinkAlt size='8' style={{ verticalAlign: 'top' }} />, the
+          inventory is from <i>Johnson's (2014) 120-item IPIP NEO-PI-R</i>.
         </p>
         <p>The following test contains <b>120 questions</b> who is estimated to take you about <b>10 minutes</b>.</p>
         <p>After you have submitted the test you will receive a detailed personality report in the following domains: <i>Openness to experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism. </i></p>
