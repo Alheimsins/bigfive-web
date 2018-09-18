@@ -47,8 +47,8 @@
     "next": "6.1.2",
     "next-offline": "2.13.0",
     "next-routes": "1.4.2",
-    "react": "16.5.1",
-    "react-dom": "16.5.1",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
     "react-icons": "3.0.5",
     "request-country": "0.1.2"
   },
