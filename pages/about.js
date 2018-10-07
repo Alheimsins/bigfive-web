@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Code } from '../components/alheimsins'
-import { FaExternalLinkAlt } from 'react-icons/fa'
 import { Link } from '../routes'
+import { FaLink } from 'react-icons/fa'
 
 const users = [
   {
@@ -104,16 +104,26 @@ const Users = ({ users }) => (
   </div>
 )
 
-const Header = ({ name }) => (
+const Shortcut = ({ name }) => (
   <h2>
     <Link route={'#' + name}>
-      <a id={name}>{name}</a>
+      <a id={name}>{name}<i className='shortcut'> <FaLink size={10} /></i></a>
     </Link>
     <style jsx>
       {`
         h2 a {
           color: unset;
           text-transform: capitalize;
+        }
+        h2 a:hover {
+          color: black;
+        }
+        .shortcut {
+          visibility: hidden;
+          color: #909090;
+        }
+        h2 a:hover .shortcut {
+          visibility: visible;
         }
       `}
     </style>
@@ -125,16 +135,14 @@ export default () => {
   const trans = users.filter(user => !user.dev)
   return (
     <Fragment>
-      <Header name='developers' />
+      <Shortcut name='developers' />
       <Users users={dev} />
-      <Header name='translators' />
+      <Shortcut name='translators' />
       <Users users={trans} />
-      <Header name='privacy' />
+      <Shortcut name='privacy' />
       <p>First, we collect, store, and use information you share on our website.</p>
       <p>We <i>store</i> the following data <Code>choosen language, test answers, Datetime of submitted test</Code>. Your IP, browser info and fingerprint is <i>not</i> stored</p>
       <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>
-      <p><a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>Contact</a>
-        <FaExternalLinkAlt size='8' style={{ verticalAlign: 'top' }} /> us if you want to see an example of stored data or want it deleted.</p>
       <p>We don’t sell your personal data to anyone. Never have, never will.</p>
       <p>If you have any questions about this Privacy Policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>contact</a> us.</p>
     </Fragment>
