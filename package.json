@@ -48,6 +48,7 @@
     "next-offline": "3.0.2",
     "next-routes": "1.4.2",
     "react": "16.5.2",
+    "react-copy-to-clipboard": "5.0.1",
     "react-dom": "16.5.2",
     "react-icons": "3.1.0",
     "request-country": "0.1.4"
