@@ -1,4 +1,8 @@
 import { Fragment } from 'react'
+import { Code } from '../components/alheimsins'
+import { FaExternalLinkAlt } from 'react-icons/fa'
+import { Link } from '../routes'
+
 const users = [
   {
     avatar: '/static/maccyber.png',
@@ -100,15 +104,39 @@ const Users = ({ users }) => (
   </div>
 )
 
+const Header = ({ name }) => (
+  <h2>
+    <Link route={'#' + name}>
+      <a id={name}>{name}</a>
+    </Link>
+    <style jsx>
+      {`
+        h2 a {
+          color: unset;
+          text-transform: capitalize;
+        }
+      `}
+    </style>
+  </h2>
+)
+
 export default () => {
   const dev = users.filter(user => user.dev)
   const trans = users.filter(user => !user.dev)
   return (
     <Fragment>
-      <h2>Developers</h2>
+      <Header name='developers' />
       <Users users={dev} />
-      <h2>Translators</h2>
+      <Header name='translators' />
       <Users users={trans} />
+      <Header name='privacy' />
+      <p>First, we collect, store, and use information you share on our website.</p>
+      <p>We <i>store</i> the following data <Code>choosen language, test answers, Datetime of submitted test</Code>. Your IP, browser info and fingerprint is <i>not</i> stored</p>
+      <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>
+      <p><a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>Contact</a>
+        <FaExternalLinkAlt size='8' style={{ verticalAlign: 'top' }} /> us if you want to see an example of stored data or want it deleted.</p>
+      <p>We don’t sell your personal data to anyone. Never have, never will.</p>
+      <p>If you have any questions about this Privacy Policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>contact</a> us.</p>
     </Fragment>
   )
 }
