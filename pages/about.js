@@ -1,7 +1,5 @@
 import { Fragment } from 'react'
-import { Code } from '../components/alheimsins'
-import { Link } from '../routes'
-import { FaLink } from 'react-icons/fa'
+import { Code, ShortcutH2 } from '../components/alheimsins'
 
 const users = [
   {
@@ -104,42 +102,16 @@ const Users = ({ users }) => (
   </div>
 )
 
-const Shortcut = ({ name }) => (
-  <h2>
-    <Link route={'#' + name}>
-      <a id={name}>{name}<i className='shortcut'> <FaLink size={10} /></i></a>
-    </Link>
-    <style jsx>
-      {`
-        h2 a {
-          color: unset;
-          text-transform: capitalize;
-        }
-        h2 a:hover {
-          color: black;
-        }
-        .shortcut {
-          visibility: hidden;
-          color: #909090;
-        }
-        h2 a:hover .shortcut {
-          visibility: visible;
-        }
-      `}
-    </style>
-  </h2>
-)
-
 export default () => {
   const dev = users.filter(user => user.dev)
   const trans = users.filter(user => !user.dev)
   return (
     <Fragment>
-      <Shortcut name='developers' />
+      <ShortcutH2 name='developers' />
       <Users users={dev} />
-      <Shortcut name='translators' />
+      <ShortcutH2 name='translators' />
       <Users users={trans} />
-      <Shortcut name='privacy' />
+      <ShortcutH2 name='privacy' />
       <p>First, we collect, store, and use information you share on our website.</p>
       <p>We <i>store</i> the following data <Code>choosen language, test answers, Datetime of submitted test</Code>. Your IP, browser info and fingerprint is <i>not</i> stored</p>
       <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>

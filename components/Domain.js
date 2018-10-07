@@ -1,9 +1,10 @@
 import { Component, Fragment } from 'react'
 import Summary from './Summary'
+import { ShortcutH2, ShortcutH1 } from './alheimsins'
 
 const Facet = ({ data }) => (
   <Fragment>
-    <h2>{data.title}</h2>
+    <ShortcutH2 name={data.title} />
     <p>Score: {data.score}/20 - {data.scoreText}</p>
     <p><span dangerouslySetInnerHTML={{ __html: data.text }} /></p>
   </Fragment>
@@ -26,7 +27,7 @@ export default class extends Component {
     const { data, chartWidth } = this.props
     return (
       <div className='domain-wrapper'>
-        <h1>{data.title}</h1>
+        <ShortcutH1 name={data.title} />
         <p><em>{data.shortDescription}</em></p>
         <p>Score: {data.score}/120 - {data.scoreText}</p>
         <p><strong>{data.text}</strong></p>
