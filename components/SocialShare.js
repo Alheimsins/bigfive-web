@@ -1,22 +1,22 @@
 import { Component } from 'react'
 import { FaFacebook, FaTwitter, FaGooglePlus, FaLink } from 'react-icons/fa'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from 'react-spring'
 
 const Copied = styles => (
   <animated.i
     style={{
-      backgroundColor: "rgb(255, 0, 128)",
-      padding: "2px 10px",
-      color: "white",
-      position: "absolute",
-      borderRadius: "5px",
+      backgroundColor: 'rgb(255, 0, 128)',
+      padding: '2px 10px',
+      color: 'white',
+      position: 'absolute',
+      borderRadius: '5px',
       ...styles
     }}
   >
     Link copied
   </animated.i>
-);
+)
 
 export default class extends Component {
   constructor (props) {
@@ -38,10 +38,10 @@ export default class extends Component {
         <CopyToClipboard text={url} onCopy={() => this.showCopied()}>
           <a title='Copy to clipboard' style={{ cursor: 'pointer' }}>
             <Transition
-                native
-                from={{ opacity: 0, transform: "translateX(10px)" }}
-                enter={{ opacity: 1, transform: "translateX(0)" }}
-                leave={{ opacity: 0, transform: "translateX(10px)" }}
+              native
+              from={{ opacity: 0, transform: 'translateX(10px)' }}
+              enter={{ opacity: 1, transform: 'translateX(0)' }}
+              leave={{ opacity: 0, transform: 'translateX(10px)' }}
             >
               {this.state.copied && Copied}
             </Transition>
