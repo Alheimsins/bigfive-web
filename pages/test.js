@@ -44,7 +44,7 @@ export default class extends Component {
 
   componentDidMount () {
     const itemsPerPage = window.innerWidth < 600 ? 1 : 4
-    const { lang } = this.props
+    const { lang } = this.props
     if (getProgress()) {
       const data = restoreData()
       this.setState({ ...data, itemsPerPage, restore: true })
