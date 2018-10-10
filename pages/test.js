@@ -11,7 +11,7 @@ const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
   timeout: 8000
 })
-const { getItems: getInventory, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
+const { getItems: getInventory, getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
 
