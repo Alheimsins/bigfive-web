@@ -1,6 +1,22 @@
 import { Component } from 'react'
 import { FaFacebook, FaTwitter, FaGooglePlus, FaLink } from 'react-icons/fa'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { Transition, animated } from 'react-spring';
+
+const Copied = styles => (
+  <animated.i
+    style={{
+      backgroundColor: "rgb(255, 0, 128)",
+      padding: "2px 10px",
+      color: "white",
+      position: "absolute",
+      borderRadius: "5px",
+      ...styles
+    }}
+  >
+    Link copied
+  </animated.i>
+);
 
 export default class extends Component {
   constructor (props) {
@@ -21,7 +37,14 @@ export default class extends Component {
             Share on{' '}
         <CopyToClipboard text={url} onCopy={() => this.showCopied()}>
           <a title='Copy to clipboard' style={{ cursor: 'pointer' }}>
-            { this.state.copied && <i className='copy-text'>Link copied</i> }
+            <Transition
+                native
+                from={{ opacity: 0, transform: "translateX(10px)" }}
+                enter={{ opacity: 1, transform: "translateX(0)" }}
+                leave={{ opacity: 0, transform: "translateX(10px)" }}
+            >
+              {this.state.copied && Copied}
+            </Transition>
             <FaLink />
           </a>
         </CopyToClipboard>{' '}
@@ -30,11 +53,6 @@ export default class extends Component {
         <a href={`https://plus.google.com/share?url=${url}`} title='Share on google plus'><FaGooglePlus /></a>
         <style jsx>
           {`
-            .copy-text {
-              background-color: #bd10e0;
-              color: white;
-              position: absolute;
-            }
             .share {
               text-align: right;
             }
