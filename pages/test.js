@@ -16,7 +16,7 @@ const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
 
 export default class extends Component {
-  static async getInitialProps ({ query }) {
+  static async getInitialProps ({ query, req }) {
     const lang = query.lang || 'en'
     const inventory = await getInventory(lang)
     return { inventory, lang }
@@ -48,9 +48,19 @@ export default class extends Component {
       const data = restoreData()
       this.setState({ ...data, itemsPerPage, restore: true })
       console.log('Your state is restored from LocalStorage')
+
+      if (this.props.lang !== 'en') {
+        setItem('lang', this.props.lang)
+        Router.pushRoute('test', this.props.lang)
+      }
     } else {
       const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
       this.setState({ items, itemsPerPage })
+
+      if (this.props.lang !== 'en') {
+        setItem('lang', this.props.lang)
+        Router.pushRoute('test', this.props.lang)
+      }
     }
   }
 
@@ -63,6 +73,7 @@ export default class extends Component {
     const inventory = getInventory(lang)
     const { items } = getItems(this.state.position, this.state.itemsPerPage, inventory).current()
     this.setState({ inventory, lang, items })
+    setItem('lang', lang)
     Router.pushRoute('test', { lang })
   }
 
