@@ -9,6 +9,7 @@ const languageList = languages.map(code => ({ code, name: ISO6391.getName(code) 
 const startTest = e => {
   e.preventDefault()
   const lang = e.target.languages.value
+  console.log(lang)
   Router.pushRoute(`/test/${lang}`)
 }
 
