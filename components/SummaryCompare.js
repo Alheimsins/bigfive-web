@@ -1,15 +1,15 @@
-import { Chart } from "react-google-charts";
-import { Loading } from "./alheimsins";
+import { Chart } from 'react-google-charts'
+import { Loading } from './alheimsins'
 
 export default ({ title, data, header, vAxis, chartWidth }) => (
   <Chart
-    chartType="ColumnChart"
-    data={[["domain", ...header], ...data]}
+    chartType='ColumnChart'
+    data={[['domain', ...header], ...data]}
     options={{ vAxis }}
     width={chartWidth}
-    height="500px"
+    height='500px'
     graph_id={title}
     legend_toggle={false}
     loader={<Loading />}
   />
-);
+)

@@ -36,7 +36,6 @@
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.0.0",
     "@alheimsins/b5-result-text": "1.5.4",
-    "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.18.0",
     "b5-calculate-score": "1.0.4",
     "dotenv": "6.1.0",
