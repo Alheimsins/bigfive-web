@@ -34,7 +34,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@alheimsins/b5-result-text": "github:alheimsins/b5-result-text",
+    "@alheimsins/b5-result-text": "1.5.4",
     "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.18.0",
     "b5-calculate-score": "1.0.4",
