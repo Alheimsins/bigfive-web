@@ -6,7 +6,7 @@ export default ({ user, children }) => (
   <div className='container'>
     <Head>
       <title>Free open-source BigFive personality traits test - translated to multiple languages</title>
-      <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, width=device-width' />
+      <meta name='viewport' content='initial-scale=1, maximum-scale=1, width=device-width' />
       <meta property='og:title' content='Want to take a free Big Five personality test?' />
       <meta property='og:description' content='Take a free, open-source Big Five personality test - translated to multiple languages. Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your partner, colleagues, friends or family.' />
       <meta property='og:image' content='/static/apple-icon-152x152.png' />
