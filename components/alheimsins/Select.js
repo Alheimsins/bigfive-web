@@ -9,7 +9,7 @@ export default function Select (props) {
 
   return (
     <div>
-      <select name='country' {...propTypes}>
+      <select name='country' aria-label={props.name} {...propTypes}>
         {props.options.map(option =>
           <option key={option.code} value={option.code}>{option.name}</option>
         )}

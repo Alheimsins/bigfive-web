@@ -11,7 +11,7 @@ const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
   timeout: 8000
 })
-const { getItems: getInventory, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
+const { getItems: getInventory, getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 const getItems = require('../lib/get-items')
 const sleep = require('../lib/sleep')
 
@@ -44,22 +44,23 @@ export default class extends Component {
 
   componentDidMount () {
     const itemsPerPage = window.innerWidth < 600 ? 1 : 4
+    const { lang } = this.props
     if (getProgress()) {
       const data = restoreData()
       this.setState({ ...data, itemsPerPage, restore: true })
       console.log('Your state is restored from LocalStorage')
 
-      if (this.props.lang !== 'en') {
-        setItem('lang', this.props.lang)
-        Router.pushRoute('test', this.props.lang)
+      if (lang !== 'en') {
+        setItem('lang', lang)
+        Router.pushRoute(`/test/${lang}`)
       }
     } else {
       const { items } = getItems(this.state.position, itemsPerPage, this.state.inventory).current()
       this.setState({ items, itemsPerPage })
 
-      if (this.props.lang !== 'en') {
-        setItem('lang', this.props.lang)
-        Router.pushRoute('test', this.props.lang)
+      if (lang !== 'en') {
+        setItem('lang', lang)
+        Router.pushRoute(`/test/${lang}`)
       }
     }
   }
