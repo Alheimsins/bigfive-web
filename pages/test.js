@@ -97,6 +97,27 @@ export default class extends Component {
     this.setState({ items, position, next: true, previous })
   }
 
+  classNames (classesList, lang) {
+    if (lang === 'ur') {
+      classesList.push('inverted-text')
+    }
+
+    const list = classesList.join(' ')
+    return list
+  }
+
+  styles (stylesObj, lang) {
+    if (lang === 'ur') {
+      stylesObj['-moz-transform'] = 'scale(-1, 1)'
+      stylesObj['-webkit-transform'] = 'scale(-1, 1)'
+      stylesObj['-o-transform'] = 'scale(-1, 1)'
+      stylesObj['-ms-transform'] = 'scale(-1, 1)'
+      stylesObj['transform'] = 'scale(-1, 1)'
+    }
+
+    return stylesObj
+  }
+
   async handleSubmit () {
     window.scrollTo(0, 0)
     const { items, finished, position } = getItems(this.state.position, this.state.itemsPerPage, this.state.inventory).next()
@@ -145,16 +166,16 @@ export default class extends Component {
         </div>
         <ProgressBar progress={progress} />
         {
-          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
+          restore && <p onClick={this.clearAnswers} style={this.styles({ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }, lang)}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
         }
         { items.map(item =>
           <div key={item.id} className='item'>
-            <div className='question'>
+            <div className={this.classNames(['question'], lang)}>
               { item.text }
             </div>
             <RadioGroup name={item.id} onChange={handleChange} checked={answers[item.id] && answers[item.id].score}>
               { item.choices.map(choice =>
-                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={{ display: 'block' }} />
+                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={this.styles({ display: 'block' }, lang)} />
               )}
             </RadioGroup>
           </div>
@@ -179,6 +200,13 @@ export default class extends Component {
             .question {
               font-size: 28px;
               margin-bottom: 2px;
+            }
+            .inverted-text {
+              -moz-transform: scale(-1, 1);
+              -webkit-transform: scale(-1, 1);
+              -o-transform: scale(-1, 1);
+              -ms-transform: scale(-1, 1);
+              transform: scale(-1, 1);
             }
           `}
         </style>
