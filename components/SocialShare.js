@@ -32,36 +32,44 @@ export default class extends Component {
 
   render () {
     const { url } = this.props
-    return (
-      <p className='share'>
-            Share on{' '}
-        <CopyToClipboard text={url} onCopy={() => this.showCopied()}>
-          <a title='Copy to clipboard' style={{ cursor: 'pointer' }}>
-            <Transition
-              native
-              from={{ opacity: 0, transform: 'translateX(10px)' }}
-              enter={{ opacity: 1, transform: 'translateX(0)' }}
-              leave={{ opacity: 0, transform: 'translateX(10px)' }}
-            >
-              {this.state.copied && Copied}
-            </Transition>
-            <FaLink />
-          </a>
-        </CopyToClipboard>{' '}
-        <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}`} title='Share on facebook'><FaFacebook /></a>{' '}
-        <a href={`https://twitter.com/home?status=${url}`} title='Share on twitter'><FaTwitter />{' '}</a>
-        <a href={`https://plus.google.com/share?url=${url}`} title='Share on google plus'><FaGooglePlus /></a>
-        <style jsx>
-          {`
+    return <p className='share'>
+      <span className='share-text'>Share your results </span>
+      <CopyToClipboard text={url} onCopy={() => this.showCopied()}>
+        <a title='Copy to clipboard' style={{ cursor: 'pointer' }}>
+          <Transition native from={{ opacity: 0, transform: 'translateX(10px)' }} enter={{ opacity: 1, transform: 'translateX(0)' }} leave={{ opacity: 0, transform: 'translateX(10px)' }}>
+            {this.state.copied && Copied}
+          </Transition>
+          <FaLink />
+        </a>
+      </CopyToClipboard> <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}`} title='Share on facebook'>
+        <FaFacebook />
+      </a> <a href={`https://twitter.com/home?status=${url}`} title='Share on twitter'>
+        <FaTwitter />{' '}
+      </a>
+      <a href={`https://plus.google.com/share?url=${url}`} title='Share on google plus'>
+        <FaGooglePlus />
+      </a>
+      <style jsx>
+        {`
             .share {
               text-align: right;
             }
+
+            .share-text {
+              font-size: 1.1rem;
+              margin-right: 10px;
+              transition: all 0.5s;
+            }
+
+            .share:hover .share-text {
+              margin-right: 20px;
+            }
+
             .share a {
               color: black;
             }
           `}
-        </style>
-      </p>
-    )
+      </style>
+    </p>
   }
 }
