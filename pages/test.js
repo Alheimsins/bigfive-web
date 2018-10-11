@@ -98,27 +98,6 @@ export default class extends Component {
     this.setState({ items, position, next: true, previous })
   }
 
-  classNames (classesList, lang) {
-    if (lang === 'ur') {
-      classesList.push('inverted-text')
-    }
-
-    const list = classesList.join(' ')
-    return list
-  }
-
-  styles (stylesObj, lang) {
-    if (lang === 'ur') {
-      stylesObj.MozTransform = 'scale(-1, 1)'
-      stylesObj.WebkitTransform = 'scale(-1, 1)'
-      stylesObj.OTransform = 'scale(-1, 1)'
-      stylesObj.msTransform = 'scale(-1, 1)'
-      stylesObj.transform = 'scale(-1, 1)'
-    }
-
-    return stylesObj
-  }
-
   async handleSubmit () {
     window.scrollTo(0, 0)
     const { items, finished, position } = getItems(this.state.position, this.state.itemsPerPage, this.state.inventory).next()
@@ -167,16 +146,16 @@ export default class extends Component {
         </div>
         <ProgressBar progress={progress} />
         {
-          restore && <p onClick={this.clearAnswers} style={this.styles({ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }, lang)}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
+          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
         }
         { items.map(item =>
-          <div key={item.id} className='item'>
-            <div className={this.classNames(['question'], lang)}>
+          <div key={item.id} className={lang === 'ur' ? 'item inverted-text' : 'item'}>
+            <div className='question'>
               { item.text }
             </div>
             <RadioGroup name={item.id} onChange={handleChange} checked={answers[item.id] && answers[item.id].score}>
               { item.choices.map(choice =>
-                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={this.styles({ display: 'block' }, lang)} />
+                <Radio key={item.id + choice.score} value={choice.score} color='5' text={choice.text} style={{ display: 'block' }} />
               )}
             </RadioGroup>
           </div>
