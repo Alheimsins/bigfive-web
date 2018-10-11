@@ -44,7 +44,7 @@
     "helmet": "3.14.0",
     "iso-639-1": "2.0.3",
     "mongojs": "2.6.0",
-    "next": "7.0.1",
+    "next": "7.0.2",
     "next-offline": "3.0.2",
     "next-routes": "1.4.2",
     "react": "16.5.2",
