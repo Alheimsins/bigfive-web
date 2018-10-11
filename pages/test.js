@@ -109,11 +109,11 @@ export default class extends Component {
 
   styles (stylesObj, lang) {
     if (lang === 'ur') {
-      stylesObj['-moz-transform'] = 'scale(-1, 1)'
-      stylesObj['-webkit-transform'] = 'scale(-1, 1)'
-      stylesObj['-o-transform'] = 'scale(-1, 1)'
-      stylesObj['-ms-transform'] = 'scale(-1, 1)'
-      stylesObj['transform'] = 'scale(-1, 1)'
+      stylesObj.MozTransform = 'scale(-1, 1)'
+      stylesObj.WebkitTransform = 'scale(-1, 1)'
+      stylesObj.OTransform = 'scale(-1, 1)'
+      stylesObj.msTransform = 'scale(-1, 1)'
+      stylesObj.transform = 'scale(-1, 1)'
     }
 
     return stylesObj
