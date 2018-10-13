@@ -28,7 +28,7 @@ export default (props) => {
           <FaExternalLinkAlt size='8' style={{ verticalAlign: 'top' }} />, the
           inventory is from <i>Johnson's (2014) 120-item IPIP NEO-PI-R</i>.
         </p>
-        <p>The following test contains <b>120 questions</b> who is estimated to take you about <b>10 minutes</b>.</p>
+        <p>The following test contains a series of questions which is estimated to take you about <b>10 minutes</b>to complete.</p>
         <p>After you have submitted the test you will receive a detailed personality report in the following domains: <i>Openness to experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism. </i></p>
         <p>See an <Link route='/result/58a70606a835c400c8b38e84'><a>example</a></Link> of the report.</p>
         <h2>Tips</h2>
