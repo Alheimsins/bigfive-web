@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
+import withI18next from '../../hoc/withI18next';
 
-export default ({ user, children }) => (
+
+const Layout = ({ user, children, t }) => (
   <div className='container'>
     <Head>
-      <title>Free open-source BigFive personality traits test - translated to multiple languages</title>
+      <title>{t('common:title')}</title>
       <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, width=device-width' />
       <meta property='og:title' content='Want to take a free Big Five personality test?' />
       <meta property='og:description' content='Take a free, open-source Big Five personality test - translated to multiple languages. Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your partner, colleagues, friends or family.' />
@@ -82,3 +84,5 @@ export default ({ user, children }) => (
     </style>
   </div>
 )
+
+export default withI18next(['common'])(Layout)
