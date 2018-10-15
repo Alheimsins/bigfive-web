@@ -30,6 +30,7 @@ const prepareData = data =>
 export default ({ title, data, vAxis, chartWidth }) => (
   <Chart
     chartType='ColumnChart'
+    style={{ width: '100vw' }}
     data={[
       [{ type: 'string' }, { type: 'number' }, { role: 'style' }],
       ...prepareData(data)
