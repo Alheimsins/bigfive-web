@@ -1,4 +1,4 @@
-import { Chart } from '@alheimsins/react-google-charts'
+import { Chart } from 'react-google-charts'
 import { Loading } from './alheimsins'
 
 const COLORS = [
@@ -24,12 +24,17 @@ const COLORS = [
   '#3B3EAC'
 ]
 
-const prepareData = data => data.map((item, i) => ([ item.title, item.score, COLORS[i] ]))
+const prepareData = data =>
+  data.map((item, i) => [item.title, item.score, COLORS[i]])
 
 export default ({ title, data, vAxis, chartWidth }) => (
   <Chart
     chartType='ColumnChart'
-    data={[[{ type: 'string' }, { type: 'number' }, { role: 'style' }], ...prepareData(data)]}
+    style={{ width: '90vw' }}
+    data={[
+      [{ type: 'string' }, { type: 'number' }, { role: 'style' }],
+      ...prepareData(data)
+    ]}
     options={{ vAxis, legend: 'none' }}
     width={chartWidth}
     height='500px'
