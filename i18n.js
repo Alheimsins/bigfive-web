@@ -1,8 +1,8 @@
-const i18next = require('i18next');
-const XHR = require('i18next-xhr-backend');
-const LanguageDetector = require('i18next-browser-languagedetector');
+const i18next = require('i18next')
+const XHR = require('i18next-xhr-backend')
+const LanguageDetector = require('i18next-browser-languagedetector')
 
-const i18n = i18next.default ? i18next.default : i18next;
+const i18n = i18next.default ? i18next.default : i18next
 
 const options = {
   fallbackLng: 'en',
@@ -19,50 +19,50 @@ const options = {
     escapeValue: false, // not needed for react!!
     formatSeparator: ',',
     format: (value, format, lng) => {
-      if (format === 'uppercase') return value.toUpperCase();
-      return value;
-    },
-  },
-};
+      if (format === 'uppercase') return value.toUpperCase()
+      return value
+    }
+  }
+}
 
 // for browser use xhr backend to load translations and browser lng detector
 if (process.browser) {
   i18n
     .use(XHR)
     // .use(Cache)
-    .use(LanguageDetector);
+    .use(LanguageDetector)
 }
 
 // initialize if not already initialized
-if (!i18n.isInitialized) i18n.init(options);
+if (!i18n.isInitialized) i18n.init(options)
 
 // a simple helper to getInitialProps passed on loaded i18n data
 i18n.getInitialProps = (req, namespaces) => {
-  if (!namespaces) namespaces = i18n.options.defaultNS;
-  if (typeof namespaces === 'string') namespaces = [namespaces];
+  if (!namespaces) namespaces = i18n.options.defaultNS
+  if (typeof namespaces === 'string') namespaces = [namespaces]
 
   // do not serialize i18next instance avoid sending it to client
-  if (req) req.i18n.toJSON = () => null;
+  if (req) req.i18n.toJSON = () => null
 
   const ret = {
-    i18n: req ? req.i18n : i18n, // use the instance on req - fixed language on request (avoid issues in race conditions with lngs of different users)
-  };
+    i18n: req ? req.i18n : i18n // use the instance on req - fixed language on request (avoid issues in race conditions with lngs of different users)
+  }
 
   // for serverside pass down initial translations
   if (req) {
-    const initialI18nStore = {};
+    const initialI18nStore = {}
     req.i18n.languages.forEach(l => {
-      initialI18nStore[l] = {};
+      initialI18nStore[l] = {}
       namespaces.forEach(ns => {
-        initialI18nStore[l][ns] = (req.i18n.services.resourceStore.data[l] || {})[ns] || {};
-      });
-    });
+        initialI18nStore[l][ns] = (req.i18n.services.resourceStore.data[l] || {})[ns] || {}
+      })
+    })
 
-    ret.initialI18nStore = initialI18nStore;
-    ret.initialLanguage = req.i18n.language;
+    ret.initialI18nStore = initialI18nStore
+    ret.initialLanguage = req.i18n.language
   }
 
-  return ret;
-};
+  return ret
+}
 
-module.exports = i18n;
+module.exports = i18n

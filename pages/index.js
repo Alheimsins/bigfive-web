@@ -3,7 +3,7 @@ import { Select, Button, Field } from '../components/alheimsins'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import ISO6391 from 'iso-639-1'
 import { getInfo } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
-import withI18next from '../hoc/withI18next';
+import withI18next from '../hoc/withI18next'
 
 const { languages } = getInfo()
 const languageList = languages.map(code => ({ code, name: ISO6391.getName(code) }))
@@ -15,7 +15,7 @@ const startTest = e => {
   Router.pushRoute(`/test/${lang}`)
 }
 
-const Home = ({countryCode, t}) => {
+const Home = ({ countryCode, t }) => {
   const defaultLanguage = languages.includes(countryCode) ? countryCode : 'en'
   return (
     <div>

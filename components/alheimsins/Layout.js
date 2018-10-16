@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
-import withI18next from '../../hoc/withI18next';
-
+import withI18next from '../../hoc/withI18next'
 
 const Layout = ({ user, children, t }) => (
   <div className='container'>
