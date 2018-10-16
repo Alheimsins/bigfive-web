@@ -7,3 +7,4 @@
 - Recommend removing number of questions from homepage, 10 minutes to take test seems fine, but 120 questions is daunting
 - Add multi language support on the home page
 - Option to choose between bar and circle graph on results page
+- Option to show results on a STEN scale (I would assume that you have enough data to establish the population mean)
