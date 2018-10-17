@@ -1,13 +1,13 @@
 {
   "title": "BigFive personlighetstest",
   "paragraphs": {
-    "first": "Dette er en gratis, åpen kildekode personlighetstest for å måle big five (femfaktor) personlighetstrekk.",
-    "test_evaluation": "Tester og evaluering er hetet fra",
+    "first": "Dette er en gratis, åpen-kildekode personlighetstest for å måle big five (femfaktor) personlighetstrekk.",
+    "test_evaluation": "Tester og evaluering er hentet fra",
     "inventory_is_from": "spørsmålssett er fra",
     "name_inventor": "Johnson's (2014) 120-item IPIP NEO-PI-R",
     "the_following": "Følgende test inneholder en serie av spørsmål som er beregnet til å ta ca.",
     "10_minutes": "10 minutter",
-    "to_complete": "å gjøre ferdig",
+    "to_complete": "å fullføre",
     "after_submitted": "Etter testen er innsendt, vil du motta en detaljert personlighetsrapoort i følgende domener:",
     "openess": "Åpenhet for erfaringer, Planmessighet, Ekstroversjon, Medmenneskelighet og Nevrotisisme.",
     "see_an": "Se",
