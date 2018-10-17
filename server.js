@@ -25,7 +25,7 @@ i18n
   .init(
     {
       fallbackLng: 'en',
-      preload: ['en', 'de'], // Preload all languages
+      preload: ['en', 'es', 'no'], // Preload all languages
       ns: ['common', 'home'], // Need to preload all the namespaces
       backend: {
         loadPath: join(__dirname, '/locales/{{lng}}/{{ns}}.json'),
