@@ -57,7 +57,7 @@
     "react-dom": "16.5.2",
     "react-icons": "3.2.1",
     "react-google-charts": "3.0.8",
-    "react-i18next": "8.0.7",
+    "react-i18next": "8.0.8",
     "react-spring": "5.9.2",
     "request-country": "0.1.4"
   },
