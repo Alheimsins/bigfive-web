@@ -32,10 +32,16 @@ Open web-browser at http://localhost:3000
 
 ## Deploy using [Now](https://zeit.co/now)
 
+At the moment bigfive-web is only compatible with Now v1.
+
+To deploy you will need no have the now-cli installed.
+
+- Clone the repo
+- Change [production.env](production.env) to match your settings
+- Deploy using Now
+
 ```sh
-$ wget https://raw.githubusercontent.com/Alheimsins/bigfive-web/master/production.env
-$ vim production.env # Edit config
-$ now -E production.env https://github.com/Alheimsins/bigfive-web
+$ now
 ```
 
 ## Deploy using [Docker](https://www.docker.com/)
