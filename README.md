@@ -49,8 +49,11 @@ $ now
 Install [Docker](https://www.docker.com/)
 
 ```sh
-docker run -d --name bigfive-web alheimsins/bigfive-web
+$ docker run -d -p 3000:3000 --name bigfive-web alheimsins/bigfive-web
 ```
+
+This will spin up a docker container and the test will be accessible at http://localhost:3000
+
 ## Related
 
 - [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) - Module for returning Big Five [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items
