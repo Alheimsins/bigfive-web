@@ -1,7 +1,7 @@
 {
-  "name": "alheimsins-b5-web",
-  "version": "1.0.2",
-  "description": "",
+  "name": "bigfive-web",
+  "version": "1.0.0",
+  "description": "Website for five factor model of personality",
   "private": true,
   "author": {
     "name": "Jonas Enge",
@@ -20,7 +20,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "test": "npm audit && ava",
+    "test": "standard && npm audit && ava",
     "test-offline": "standard && ava",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
@@ -28,10 +28,18 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+    "cleanup": "rm -rf .next",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now && now alias"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alheimsins/bigfive-web.git"
+  },
+  "keywords": [
+    "bigfive",
+    "personality"
+  ],
   "license": "MIT",
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.1.0",
@@ -39,6 +47,7 @@
     "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.18.0",
     "b5-calculate-score": "1.0.4",
+    "babel-eslint": "10.0.1",
     "dotenv": "6.2.0",
     "express": "4.16.4",
     "helmet": "3.15.0",
@@ -55,9 +64,9 @@
     "react": "16.6.3",
     "react-copy-to-clipboard": "5.0.1",
     "react-dom": "16.6.3",
-    "react-icons": "3.2.2",
     "react-google-charts": "3.0.10",
     "react-i18next": "8.3.8",
+    "react-icons": "3.2.2",
     "request-country": "0.1.4"
   },
   "devDependencies": {
@@ -70,7 +79,15 @@
   "standard": {
     "ignore": [
       "/static/*.js"
-    ]
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true,
+        "jsx": true
+      },
+      "sourceType": "module"
+    }
   },
   "husky": {
     "hooks": {

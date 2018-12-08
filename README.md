@@ -34,15 +34,7 @@ Open web-browser at http://localhost:3000
 
 At the moment bigfive-web is only compatible with Now v1.
 
-To deploy you will need no have the now-cli installed.
-
-- Clone the repo
-- Change [production.env](production.env) to match your settings
-- Deploy using Now
-
-```sh
-$ now
-```
+Follow this [step by step guide](docs/now.md)
 
 ## Deploy using [Docker](https://www.docker.com/)
 
