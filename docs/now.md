@@ -24,7 +24,7 @@ Take a note of the database connection string. Usually it looks like something l
 mongodb://<dbuser>:<dbpassword>@testbase.mlab.com:27634/b5base
 ```
 
-<dbuser> and <dbpassword> are hopefully something else :-)
+`<dbuser>` and `<dbpassword>` are hopefully something else :-)
 
 # Step 2 - Pick an alias at Now
 
