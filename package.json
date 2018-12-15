@@ -65,7 +65,7 @@
     "react-copy-to-clipboard": "5.0.1",
     "react-dom": "16.6.3",
     "react-google-charts": "3.0.10",
-    "react-i18next": "8.3.9",
+    "react-i18next": "8.4.0",
     "react-icons": "3.2.2",
     "request-country": "0.1.4"
   },
