@@ -116,7 +116,9 @@ export default class extends Component {
       const result = {
         ...getInfo(),
         lang: this.state.lang,
-        answers: choices
+        answers: choices,
+        timeElapsed: Math.round((Date.now() - this.state.now) / 1000),
+        dateStamp: Date.now()
       }
       try {
         const { data } = await httpInstance.post('/api/save', result)
