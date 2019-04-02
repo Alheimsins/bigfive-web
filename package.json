@@ -56,7 +56,7 @@
     "i18next-express-middleware": "1.7.3",
     "i18next-node-fs-backend": "2.1.1",
     "i18next-xhr-backend": "1.5.1",
-    "iso-639-1": "2.0.3",
+    "iso-639-1": "2.0.5",
     "mongojs": "2.6.0",
     "next": "8.0.2",
     "next-offline": "3.3.6",
