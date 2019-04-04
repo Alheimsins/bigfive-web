@@ -35,12 +35,12 @@ If not you have to be sure that whatever you pick are free at *.now.sh. For this
 
 You'll need a added to the now account you are going to use.
 
-- b5-db-connection - this is the MongoDB connection string from step 1
+- b5_db_connection - this is the MongoDB connection string from step 1
 
 in you cli add the secrets
 
 ```
-$ now secrets add b5-db-connection "mongodb://<dbuser>:<dbpassword>@testbase.mlab.com:27634/b5base"
+$ now secrets add b5_db_connection "mongodb://<dbuser>:<dbpassword>@testbase.mlab.com:27634/b5base"
 ```
 
 You can use another name for your secret and even don't add it but then you'll have to handle it in the next step
