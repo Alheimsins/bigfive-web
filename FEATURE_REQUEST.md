@@ -8,3 +8,4 @@
 - Add multi language support on the home page :heavy_check_mark:
 - Option to choose between bar and circle graph on results page :heavy_check_mark:
 - Option to show results on a STEN scale (I would assume that you have enough data to establish the population mean)
+- It is sometime difficult to get the correct meaning of the question in the language you are attempting the assessment, so provide an option to view the same question in an alternate language before answering.
