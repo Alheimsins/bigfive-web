@@ -25,7 +25,7 @@ The results are saved to a [mongodb](https://www.mongodb.com/) database, so for 
 git clone https://github.com/Alheimsins/bigfive-web
 cd bigfive-web
 npm install
-vim config.js # Edit config
+vim config.js # Edit config with vim (or your favorite editor)
 npm run dev
 ```
 Open web-browser at http://localhost:3000
