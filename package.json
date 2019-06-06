@@ -72,7 +72,7 @@
   "devDependencies": {
     "ava": "1.4.1",
     "coveralls": "3.0.4",
-    "husky": "2.3.0",
+    "husky": "2.4.0",
     "nyc": "14.1.1",
     "standard": "12.0.1"
   },
