@@ -45,7 +45,7 @@ export default class extends Component {
   }
 
   render () {
-    let seconds = Math.round(this.state.elapsed / 1000)
+    const seconds = Math.round(this.state.elapsed / 1000)
     return <div>{secToMin(seconds)}</div>
   }
 }

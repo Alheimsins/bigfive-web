@@ -79,7 +79,7 @@ export default class extends Component {
   }
 
   async handleChange ({ target }) {
-    let { answers, items, inventory, itemsPerPage, previous, position } = this.state
+    const { answers, items, inventory, itemsPerPage, previous, position } = this.state
     const { domain, facet } = inventory.find(q => q.id === target.name)
     answers[target.name] = { score: parseInt(target.value), domain, facet }
     const progress = Math.round(Object.keys(answers).length / inventory.length * 100)
@@ -120,13 +120,9 @@ export default class extends Component {
         timeElapsed: Math.round((Date.now() - this.state.now) / 1000),
         dateStamp: Date.now()
       }
-      try {
-        const { data } = await httpInstance.post('/api/save', result)
-        setItem('result', data._id)
-        Router.pushRoute('showResult', { id: data._id })
-      } catch (error) {
-        throw error
-      }
+      const { data } = await httpInstance.post('/api/save', result)
+      setItem('result', data._id)
+      Router.pushRoute('showResult', { id: data._id })
     } else {
       const next = items.filter(item => !this.state.answers[item.id]).length === 0
       this.setState({ items, position, next, previous: true, restore: false })

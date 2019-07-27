@@ -26,7 +26,7 @@ const Comparison = ({ data, chartWidth }) => {
   const header = data[0].scores.map(({ title }) => ({ label: title, type: 'number' }))
   const domainScores = data.map(result => ([result.title, ...result.scores.map(({ score }) => score)]))
   const domains = data.map(result => ({ title: result.title, description: result.description }))
-  const facets = data.map(({ facets }) => ([ ...facets ]))
+  const facets = data.map(({ facets }) => ([...facets]))
   const getFacetScores = i => facets[i].map(({ title, scores }) => [title, ...scores.map(({ score }) => score)])
   return (
     <Fragment>

@@ -10,6 +10,7 @@ export default class RadioGroup extends React.Component {
       }
     }
   }
+
   render () {
     return (
       <div>

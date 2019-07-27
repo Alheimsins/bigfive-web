@@ -17,15 +17,11 @@ const httpInstance = axios.create({
 })
 
 const getResultFromId = async id => {
-  try {
-    const formattedId = formatId(id)
-    if (!validMongoId(formattedId)) throw new Error('Invalid id')
-    const { data } = await httpInstance.get(`/api/get/${formattedId}`)
-    const scores = calculateScore(data)
-    return getResult({ scores, lang: data.lang || 'en' })
-  } catch (error) {
-    throw error
-  }
+  const formattedId = formatId(id)
+  if (!validMongoId(formattedId)) throw new Error('Invalid id')
+  const { data } = await httpInstance.get(`/api/get/${formattedId}`)
+  const scores = calculateScore(data)
+  return getResult({ scores, lang: data.lang || 'en' })
 }
 
 const Resume = ({ data, chartWidth }) => (

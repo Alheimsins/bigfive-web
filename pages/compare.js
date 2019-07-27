@@ -29,14 +29,14 @@ export default class extends Component {
   handleDelete (num) {
     const people = this.state.people
     people.splice(num, 1)
-    this.setState({ people: [ ...people ] })
+    this.setState({ people: [...people] })
   }
 
   handleAdd (e) {
     e.preventDefault()
     const name = this.state.name
     const id = formatId(this.state.id)
-    this.setState({ name: '', id: '', people: [ ...this.state.people, { name, id } ] })
+    this.setState({ name: '', id: '', people: [...this.state.people, { name, id }] })
   }
 
   handleCompare () {
