@@ -36,7 +36,11 @@ Open web-browser at http://localhost:3000
 
 At the moment bigfive-web is only compatible with Now v1.
 
+*You can only deploy to v1 if you have a paid account*.
+
 Follow this [step by step guide](docs/now.md)
+
+You can help making a version that supports v2 [here](https://github.com/Alheimsins/bigfive-web-serverless-hooks)
 
 ## Deploy using [Docker](https://www.docker.com/)
 

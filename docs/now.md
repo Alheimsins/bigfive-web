@@ -11,7 +11,7 @@ On your local machine you'll need
 - a local copy of this repo
 
 On the web you'll need
-- now account
+- a paid now account
 - hosted MongoDB like compose og mlab
 - an available url to use as alias
 
