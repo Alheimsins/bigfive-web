@@ -58,7 +58,7 @@
     "i18next-xhr-backend": "1.5.1",
     "iso-639-1": "2.0.5",
     "mongojs": "2.6.0",
-    "next": "9.0.2",
+    "next": "9.0.3",
     "next-offline": "4.0.3",
     "next-routes": "1.4.2",
     "react": "16.8.6",
