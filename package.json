@@ -74,7 +74,7 @@
     "coveralls": "3.0.6",
     "husky": "3.0.4",
     "nyc": "14.1.1",
-    "standard": "14.0.2"
+    "standard": "14.1.0"
   },
   "standard": {
     "ignore": [
