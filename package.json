@@ -42,7 +42,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.1.7",
+    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.1.8",
     "@alheimsins/b5-result-text": "1.7.3",
     "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.19.0",
