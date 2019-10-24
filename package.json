@@ -51,7 +51,7 @@
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "helmet": "3.21.2",
-    "i18next": "12.1.0",
+    "i18next": "17.3.1",
     "i18next-browser-languagedetector": "3.0.3",
     "i18next-express-middleware": "1.8.2",
     "i18next-node-fs-backend": "2.1.3",
