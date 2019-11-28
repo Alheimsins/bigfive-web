@@ -29,7 +29,7 @@ const Comparison = ({ data, chartWidth }) => {
   const facets = data.map(({ facets }) => ([...facets]))
   const getFacetScores = i => facets[i].map(({ title, scores }) => [title, ...scores.map(({ score }) => score)])
   return (
-    <Fragment>
+    <>
       <h1>Overview</h1>
       <Summary data={domainScores} header={header} vAxis={{ minValue: 24, maxValue: 120 }} chartWidth={chartWidth} title='domain' />
       {
@@ -41,7 +41,7 @@ const Comparison = ({ data, chartWidth }) => {
           </Fragment>
         ))
       }
-    </Fragment>
+    </>
   )
 }
 
@@ -84,17 +84,17 @@ export default class extends Component {
     const { id } = this.props.query
     const currentUrl = URL + '/compare/' + id
     return (
-      <Fragment>
+      <>
         <h2>Compare</h2>
         {
           comparison &&
-            <Fragment>
+            <>
               <SocialShare url={currentUrl} />
               <Comparison data={comparison} chartWidth={chartWidth} />
               <SocialShare url={currentUrl} />
-            </Fragment>
+            </>
         }
-      </Fragment>
+      </>
     )
   }
 }

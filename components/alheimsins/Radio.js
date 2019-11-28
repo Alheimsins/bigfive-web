@@ -10,10 +10,9 @@ export default class Radio extends Component {
       <label key={this.props.value}>
         <input type='radio' name={name} value={this.props.value} checked={choosen} onChange={onChange} />
         <span className='radios' style={this.props.style}>
-          { choosen
+          {choosen
             ? <span role='radio' className={this.props.color ? `color${this.props.color}` : 'checked'}><MdRadioButtonChecked /></span>
-            : <span role='radio' className='unchecked'><MdRadioButtonUnchecked /></span>
-          }
+            : <span role='radio' className='unchecked'><MdRadioButtonUnchecked /></span>}
             &nbsp;
           {this.props.text}
         </span>

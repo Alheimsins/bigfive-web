@@ -19,7 +19,7 @@ const Layout = ({ user, children, t }) => (
       <meta name='twitter:image' content='https://bigfive-test.com/static/apple-icon.png' />
       <meta name='description' content='Take a free, open-source Big Five personality test - translated to multiple languages. Get to know yourself better from a detailed profile of your personality traits or learn to know others by comparing yourself with your partner, colleagues, friends or family.' />
       <meta name='keywords' content='BigFive, personality traits, survey, compare' />
-      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: `{ "@context": "http://schema.org/", "@type": "WebSite", "name": "BigFive Test", "url": "https://bigfive-test.com" }` }} />
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: '{ "@context": "http://schema.org/", "@type": "WebSite", "name": "BigFive Test", "url": "https://bigfive-test.com" }' }} />
       <link rel='icon' sizes='192x192' href='/static/android-icon-192x192.png' />
       <link rel='apple-touch-icon' href='/static/apple-icon-152x152.png' />
       <link rel='shortcut icon' href='/static/favicon.ico' />

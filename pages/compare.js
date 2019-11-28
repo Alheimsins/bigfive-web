@@ -54,7 +54,7 @@ export default class extends Component {
         <p>Compare results from the bigfive personality test with multiple people.</p>
         <p>Type in <i>either</i> the ID you got i.e. <Code>58a70606a835c400c8b38e84</Code> <br /><i>- or -</i><br /> the link i.e. <Code>{URL}/result/58a70606a835c400c8b38e84</Code><br /> in the <i>ID-input field</i>.</p>
         <div style={{ textAlign: 'left' }}>
-          { people && people.length > 0 && people.map((person, i) =>
+          {people && people.length > 0 && people.map((person, i) =>
             <div key={i} className='persons'>
               <a title='Delete' onClick={() => this.handleDelete(i)}>
                 <MdDelete style={{ cursor: 'pointer', marginRight: '10px' }} />
@@ -62,7 +62,7 @@ export default class extends Component {
               <b>{person.name}</b> - <i>{person.id}</i>
             </div>
           )}
-          { people && people.length >= 2 && <Button value='Compare people' onClick={this.handleCompare} /> }
+          {people && people.length >= 2 && <Button value='Compare people' onClick={this.handleCompare} />}
           <form onSubmit={this.handleAdd} style={{ marginTop: '40px' }}>
             <Field name='Name'>
               <InputText name='name' value={name} onChange={this.handleChange} placeholder='Name for comparison' autoComplete='off' autoFocus />
@@ -70,7 +70,7 @@ export default class extends Component {
             <Field name='ID' style={{ marginBottom: 0 }}>
               <InputText name='id' value={id} onChange={this.handleChange} placeholder='URL or id for comparison' autoComplete='off' />
             </Field>
-            { error && <p style={{ fontSize: '10px', color: '#ff0033' }}>{error}</p> }
+            {error && <p style={{ fontSize: '10px', color: '#ff0033' }}>{error}</p>}
             <Button value='Add' type='submit' disabled={!validMongoId(formattedId) || !id || !name} />
           </form>
           <style jsx>

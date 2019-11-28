@@ -3,7 +3,7 @@ export default (props) => (
     <label htmlFor={props.name}>
       {props.name.toUpperCase()}:
     </label>
-    { props.children }
+    {props.children}
     <style jsx>
       {`
         .field {

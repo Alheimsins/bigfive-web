@@ -20,7 +20,7 @@ export default class extends Component {
       Share results  {' '}
       <CopyToClipboard text={url} onCopy={() => this.showCopied()}>
         <a title='Copy to clipboard' style={{ cursor: 'pointer' }}>
-          { this.state.copied && <i className='copy-text'>Link copied</i> }
+          {this.state.copied && <i className='copy-text'>Link copied</i>}
           <FaLink />
         </a>
       </CopyToClipboard>{' '}

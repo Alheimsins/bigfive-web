@@ -80,18 +80,18 @@ export default class extends Component {
     const { id } = this.props.query
     const currentUrl = URL + '/result/' + id
     return (
-      <Fragment>
+      <>
         <h2>Result</h2>
         {
           results &&
-          <Fragment>
-            <SocialShare url={currentUrl} />
-            { id && <Fragment>Save the following ID to see the results later or compare yourself to others - <Code>{ id }</Code></Fragment> }
-            <Resume data={results} chartWidth={chartWidth} />
-            <SocialShare url={currentUrl} />
-          </Fragment>
+            <>
+              <SocialShare url={currentUrl} />
+              {id && <>Save the following ID to see the results later or compare yourself to others - <Code>{id}</Code></>}
+              <Resume data={results} chartWidth={chartWidth} />
+              <SocialShare url={currentUrl} />
+            </>
         }
-      </Fragment>
+      </>
     )
   }
 }

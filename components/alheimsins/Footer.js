@@ -27,7 +27,8 @@ export default () => (
           !link.target
             ? <a key={link.name} href={link.url} target='_blank' style={{ color: link.color }} rel='noopener'>{link.icon}{link.name}</a>
             : <Link key={link.name} route={link.url}><a>{link.icon}{link.name}</a></Link>
-        )}
+        )
+      }
     </div>
     <style jsx>
       {`

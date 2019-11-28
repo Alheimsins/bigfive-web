@@ -44,7 +44,7 @@ const users = [
 
 const Users = ({ users }) => (
   <div className='about'>
-    { users.map(user => (
+    {users.map(user => (
       <div key={user.nick.name} className='info'>
         <div>
           <span className='avatar'>
@@ -106,7 +106,7 @@ export default () => {
   const dev = users.filter(user => user.dev)
   const trans = users.filter(user => !user.dev)
   return (
-    <Fragment>
+    <>
       <ShortcutH2 name='developers' />
       <Users users={dev} />
       <ShortcutH2 name='translators' />
@@ -117,6 +117,6 @@ export default () => {
       <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>
       <p>We don’t sell your personal data to anyone. Never have, never will.</p>
       <p>If you have any questions about this privacy policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>contact</a> us.</p>
-    </Fragment>
+    </>
   )
 }

@@ -71,7 +71,7 @@ export default class extends Component {
   render () {
     const { chart } = this.state
     return (
-      <Fragment>
+      <>
         <div className='pick-chart'>
           <span onClick={() => this.setState({ chart: 'ColumnChart' })} className={chart === 'ColumnChart' ? 'chart selected' : 'chart'}>Column</span>
           <span onClick={() => this.setState({ chart: 'PieChart' })} className={chart === 'PieChart' ? 'chart selected' : 'chart'}>Pie</span>
@@ -98,7 +98,7 @@ export default class extends Component {
             }
           `}
         </style>
-      </Fragment>
+      </>
     )
   }
 }
