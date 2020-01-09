@@ -67,7 +67,7 @@
     "react-google-charts": "3.0.15",
     "react-i18next": "8.4.0",
     "react-icons": "3.8.0",
-    "request-country": "0.1.4"
+    "request-country": "0.1.5"
   },
   "devDependencies": {
     "ava": "2.4.0",
