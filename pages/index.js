@@ -24,7 +24,7 @@ const Home = ({ countryCode, t }) => {
       <div style={{ textAlign: 'left', margin: 'auto', fontSize: '14px', width: '100%' }}>
         <p>{t('home:paragraphs:first')}</p>
         <p>
-          {t('home:paragraphs:test_evaluation')} <a href='http://ipip.ori.org' rel='noopener' target='_blank'>ipip.ori.org</a>
+          {t('home:paragraphs:test_evaluation')} <a href='http://ipip.ori.org' rel='noopener noreferrer' target='_blank'>ipip.ori.org</a>
           <FaExternalLinkAlt size='8' style={{ verticalAlign: 'top' }} />, {t('home:paragraphs:inventory_is_from')} <i>{t('home:paragraphs:name_inventor')}</i>.
         </p>
         <p> {t('home:paragraphs:the_following')} <b>{t('home:paragraphs:10_minutes')}</b> {t('home:paragraphs:to_complete')}</p>

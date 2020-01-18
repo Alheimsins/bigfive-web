@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react'
+import { Component } from 'react'
 import { Chart } from 'react-google-charts'
 import { Loading } from './alheimsins'
 

@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react'
+import { Component } from 'react'
 import Summary from './Summary'
 import { ShortcutH2, ShortcutH1 } from './alheimsins'
 
@@ -17,7 +17,7 @@ export default class extends Component {
     this.readMore = this.readMore.bind(this)
   }
 
-  readMore (e) {
+  handleReadMore (e) {
     const name = e.currentTarget.getAttribute('name')
     const action = !this.state[name] || this.state[name] === 'none'
     this.setState({ [name]: action })
@@ -34,8 +34,8 @@ export default class extends Component {
         <p>
           {
             this.state[data.domain]
-              ? <><span dangerouslySetInnerHTML={{ __html: data.description }} /><br /><br /><span name={data.domain} onClick={this.readMore} style={{ cursor: 'pointer' }}><a>read less</a></span></>
-              : <><span dangerouslySetInnerHTML={{ __html: data.description.substring(0, 100) }} /><span name={data.domain} onClick={this.readMore} style={{ cursor: 'pointer' }}>... <a>read more</a> ({data.description.split(' ').length} words)</span></>
+              ? <><span dangerouslySetInnerHTML={{ __html: data.description }} /><br /><br /><span name={data.domain} onClick={this.handleReadMore} style={{ cursor: 'pointer' }}><a>read less</a></span></>
+              : <><span dangerouslySetInnerHTML={{ __html: data.description.substring(0, 100) }} /><span name={data.domain} onClick={this.handleReadMore} style={{ cursor: 'pointer' }}>... <a>read more</a> ({data.description.split(' ').length} words)</span></>
           }
         </p>
         {data && data.facets && <Summary data={data.facets} vAxis={{ minValue: 0, maxValue: 20 }} title={data.title} chartWidth={chartWidth} />}

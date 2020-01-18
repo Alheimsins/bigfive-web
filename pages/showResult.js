@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react'
+import { Component } from 'react'
 import calculateScore from 'b5-calculate-score'
 import getResult from '@alheimsins/b5-result-text'
 import axios from 'axios'

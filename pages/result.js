@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react'
+import { Component } from 'react'
 import getConfig from 'next/config'
 import { Router } from '../routes'
 import validMongoId from '../lib/valid-mongoid'

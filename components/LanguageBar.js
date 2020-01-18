@@ -12,7 +12,7 @@ export default class extends Component {
     this.toggleLang = this.toggleLang.bind(this)
   }
 
-  toggleLang () {
+  handleToggleLang () {
     this.setState({ toggleLang: !this.state.toggleLang })
   }
 
@@ -28,7 +28,7 @@ export default class extends Component {
           this.state.toggleLang &&
             languages.map(langCode => <span key={langCode} onClick={() => switchLanguage(langCode)} className={selectedLanguage === langCode ? 'languageSelected' : 'language'}>{langCode} </span>)
         }
-        <span className='language' onClick={this.toggleLang}> {this.state.toggleLang ? <FaAngleLeft /> : <FaAngleRight />}</span>
+        <span className='language' onClick={this.handleToggleLang}> {this.state.toggleLang ? <FaAngleLeft /> : <FaAngleRight />}</span>
         <style jsx>
           {`
             .language {

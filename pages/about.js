@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { Code, ShortcutH2 } from '../components/alheimsins'
 
 const users = [
@@ -116,7 +115,7 @@ export default () => {
       <p>We <i>store</i> the following data <Code>choosen language, test answers, Datetime of submitted test</Code>. Your IP, browser info and fingerprint is <i>not</i> stored</p>
       <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>
       <p>We don’t sell your personal data to anyone. Never have, never will.</p>
-      <p>If you have any questions about this privacy policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener' target='_blank'>contact</a> us.</p>
+      <p>If you have any questions about this privacy policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener noreferrer' target='_blank'>contact</a> us.</p>
     </>
   )
 }
