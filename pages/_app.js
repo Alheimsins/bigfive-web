@@ -1,5 +1,5 @@
 import { Layout } from '../components/alheimsins'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import React from 'react'
 import { Router } from '../routes'
 import * as gtag from '../lib/gtag'
@@ -22,11 +22,9 @@ export default class MyApp extends App {
   render () {
     const { Component, pageProps } = this.props
     return (
-      <Container>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Container>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     )
   }
 }
