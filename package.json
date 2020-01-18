@@ -20,8 +20,8 @@
     "node": ">=12.14.1"
   },
   "scripts": {
-    "test": "standard && npm audit && ava",
-    "test-offline": "standard && ava",
+    "test": "standard && ava",
+    "audit": "npm audit",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
