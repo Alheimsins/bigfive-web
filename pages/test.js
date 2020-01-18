@@ -39,7 +39,7 @@ export default class extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleBack = this.handleBack.bind(this)
     this.switchLanguage = this.switchLanguage.bind(this)
-    this.clearAnswers = this.clearAnswers.bind(this)
+    this.handleClearAnswers = this.handleClearAnswers.bind(this)
   }
 
   componentDidMount () {

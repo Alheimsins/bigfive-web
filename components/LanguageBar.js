@@ -9,7 +9,7 @@ export default class extends Component {
     this.state = {
       toggleLang: false
     }
-    this.toggleLang = this.toggleLang.bind(this)
+    this.handleToggleLang = this.handleToggleLang.bind(this)
   }
 
   handleToggleLang () {
