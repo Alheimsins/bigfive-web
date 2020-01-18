@@ -65,7 +65,7 @@ export default class extends Component {
     }
   }
 
-  clearAnswers () {
+  handleClearAnswers () {
     clearItems()
     window.location.reload(true)
   }
@@ -144,7 +144,7 @@ export default class extends Component {
         </div>
         <ProgressBar progress={progress} />
         {
-          restore && <p onClick={this.clearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
+          restore && <p onClick={this.handleClearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
         }
         {items.map(item =>
           <div key={item.id} className={lang === 'ur' ? 'item inverted-text' : 'item'}>
