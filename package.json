@@ -15,7 +15,7 @@
       "url": "https://github.com/zrrrzzt"
     }
   ],
-  "main": "server.js",
+  "main": "pages/index.js",
   "engines": {
     "node": ">=12.14.1"
   },
@@ -25,9 +25,9 @@
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next",
     "cleanup": "rm -rf .next",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now && now alias"
