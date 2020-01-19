@@ -1,0 +1,36 @@
+{
+  "common": {
+    "title": "Gratis åpen kildekode BigFive personlighettrekk test - oversatt til flere språk",
+    "example": "eksempel",
+    "tips": "Tips",
+    "language": "Språk"
+  },
+  "home": {
+    "title": "BigFive personlighetstest",
+    "paragraphs": {
+      "first": "Dette er en gratis, åpen-kildekode personlighetstest for å måle big five (femfaktor) personlighetstrekk.",
+      "test_evaluation": "Tester og evaluering er hentet fra",
+      "inventory_is_from": "spørsmålssett er fra",
+      "name_inventor": "Johnson's (2014) 120-item IPIP NEO-PI-R",
+      "the_following": "Følgende test inneholder en serie av spørsmål som er beregnet til å ta ca.",
+      "10_minutes": "10 minutter",
+      "to_complete": "å fullføre",
+      "after_submitted": "Etter testen er innsendt, vil du motta en detaljert personlighetsrapport i følgende domener:",
+      "openess": "Åpenhet for erfaringer, Planmessighet, Ekstroversjon, Medmenneskelighet og Nevrotisisme.",
+      "see_an": "Se",
+      "of_the_report": "av rapporten",
+      "tip1": "Svar ærlig, selv om du ikke liker svaret",
+      "tip2": "Beskriv deg selv som du er nå, ikke som du ønsker å være i fremtiden",
+      "tip3": "Ditt spontane svar er vanligvis det mest korrekte",
+      "select_language": "Velg språket du ønsker å ta testen i",
+      "start_test": "Start test"
+    }
+  },
+  "home.missing": {
+    "of_the_report": "of_the_report",
+    "common": {
+      "language": "common.language"
+    },
+    "start_test": "start_test"
+  }
+}

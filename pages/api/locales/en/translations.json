@@ -1,0 +1,36 @@
+{
+  "common": {
+    "title": "Free open-source BigFive personality traits test - translated to multiple languages",
+    "example": "Example",
+    "tips": "Tips",
+    "language": "Language"
+  },
+  "home": {
+    "title": "BigFive personality test",
+    "paragraphs": {
+      "first": "This is a free, open-source personality test to measure the big five personality traits.",
+      "test_evaluation": "Tests and evaluation is gathered from",
+      "inventory_is_from": "inventory is from",
+      "name_inventor": "Johnson's (2014) 120-item IPIP NEO-PI-R",
+      "the_following": "The following test contains a series of questions which is estimated to take you about",
+      "10_minutes": "10 minutes",
+      "to_complete": "to complete",
+      "after_submitted": "After you have submitted the test you will receive a detailed personality report in the following domains: ",
+      "openess": "Openness to experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism.",
+      "see_an": "See an",
+      "of_the_report": "of the report",
+      "tip1": "Answer honestly, even if you don't like the answer",
+      "tip2": "Describe yourself as you generally are now, not as you wish to be in the future",
+      "tip3": "Your spontaneous answer is usually the most accurate",
+      "select_language": "Select the language in which you want to see the test displayed in",
+      "start_test": "Start Test"
+    }
+  },
+  "home.missing": {
+    "of_the_report": "of_the_report",
+    "common": {
+      "language": "common.language"
+    },
+    "start_test": "start_test"
+  }
+}
