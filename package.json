@@ -45,7 +45,7 @@
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.1.9",
     "@alheimsins/b5-result-text": "1.7.4",
     "@alheimsins/react-google-charts": "1.6.5",
-    "axios": "0.19.1",
+    "axios": "0.19.2",
     "b5-calculate-score": "1.0.4",
     "babel-eslint": "10.0.3",
     "dotenv": "8.2.0",
