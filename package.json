@@ -70,7 +70,7 @@
     "request-country": "0.1.5"
   },
   "devDependencies": {
-    "ava": "3.0.0",
+    "ava": "3.1.0",
     "coveralls": "3.0.9",
     "husky": "4.2.1",
     "nyc": "15.0.0",
