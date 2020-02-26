@@ -47,7 +47,7 @@
     "@alheimsins/react-google-charts": "1.6.5",
     "axios": "0.19.2",
     "b5-calculate-score": "1.0.4",
-    "babel-eslint": "10.0.3",
+    "babel-eslint": "10.1.0",
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "helmet": "3.21.3",
