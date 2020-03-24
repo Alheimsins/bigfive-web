@@ -6,7 +6,8 @@ import { getInfo } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
 import withI18next from '../hoc/withI18next'
 
 const { languages } = getInfo()
-const languageList = languages.map(code => ({ code, name: ISO6391.getName(code) }))
+const langCodes = languages.map(lang => lang.id)
+const languageList = langCodes.map(code => ({ code, name: ISO6391.getName(code) }))
 
 const startTest = e => {
   e.preventDefault()
@@ -15,7 +16,7 @@ const startTest = e => {
 }
 
 const Home = ({ countryCode, t }) => {
-  const defaultLanguage = languages.includes(countryCode) ? countryCode : 'en'
+  const defaultLanguage = langCodes.includes(countryCode) ? countryCode : 'en'
   return (
     <div>
       <div style={{ paddingBottom: '20px', borderBottom: '1px solid rgb(234, 234, 234)' }}>
