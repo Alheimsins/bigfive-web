@@ -50,7 +50,7 @@
     "babel-eslint": "10.1.0",
     "dotenv": "8.2.0",
     "express": "4.17.1",
-    "helmet": "3.23.0",
+    "helmet": "3.23.1",
     "i18next": "12.1.0",
     "i18next-browser-languagedetector": "3.1.1",
     "i18next-express-middleware": "2.0.0",
