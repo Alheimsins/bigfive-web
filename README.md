@@ -1,6 +1,10 @@
 [![Build Status](https://travis-ci.org/Alheimsins/bigfive-web.svg?branch=master)](https://travis-ci.org/Alheimsins/bigfive-web)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
+# We have moved
+
+Further development of this website is done over at [rubynor/bigfive-web](https://github.com/rubynor/bigfive-web)
+
 # bigfive-web
 
 Website for five factor model of personality based on work from [IPIP-NEO-PI](https://github.com/kholia/IPIP-NEO-PI).
