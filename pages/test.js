@@ -18,7 +18,7 @@ const sleep = require('../lib/sleep')
 export default class extends Component {
   static async getInitialProps ({ query, req }) {
     const lang = query.lang || 'en'
-    const inventory = await getInventory(lang)
+    const inventory = await getInventory(lang, true, 30)
     return { inventory, lang }
   }
 
@@ -43,7 +43,7 @@ export default class extends Component {
   }
 
   componentDidMount () {
-    const itemsPerPage = window.innerWidth < 600 ? 1 : 4
+    const itemsPerPage = window.innerWidth < 600 ? 1 : 10
     const { lang } = this.props
     if (getProgress()) {
       const data = restoreData()
@@ -71,7 +71,7 @@ export default class extends Component {
   }
 
   switchLanguage (lang) {
-    const inventory = getInventory(lang)
+    const inventory = getInventory(lang, true, 30)
     const { items } = getItems(this.state.position, this.state.itemsPerPage, inventory).current()
     this.setState({ inventory, lang, items })
     setItem('lang', lang)

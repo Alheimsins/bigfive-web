@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alheimsins/bigfive-web.git"
+    "url": "git+https://github.com/Sophonaut/bigfive-web.git"
   },
   "keywords": [
     "bigfive",
@@ -42,10 +42,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "5.2.1",
+    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "Sophonaut/b5-johnson-120-ipip-neo-pi-r#main",
     "@alheimsins/b5-result-text": "4.1.0",
     "@alheimsins/react-google-charts": "1.6.5",
-    "axios": "0.20.0",
+    "axios": "^0.21.1",
     "b5-calculate-score": "1.0.4",
     "babel-eslint": "10.1.0",
     "dotenv": "8.2.0",
@@ -59,7 +59,7 @@
     "iso-639-1": "2.1.4",
     "mongojs": "3.1.0",
     "next": "9.5.4",
-    "next-offline": "5.0.2",
+    "next-offline": "^5.0.3",
     "next-routes": "1.4.2",
     "react": "16.13.1",
     "react-copy-to-clipboard": "5.0.2",

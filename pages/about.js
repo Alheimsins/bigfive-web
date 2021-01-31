@@ -106,6 +106,10 @@ export default () => {
   const trans = users.filter(user => !user.dev)
   return (
     <>
+      <ShortcutH2 name='credits' />
+      <p>
+        This personality assessment was forked from <a href='https://github.com/Alheimsins/bigfive-web'>alheimsins big five web project</a>. Sophonaut has changed UI components and the method by which the results display. Please see the original development team of the core software below. Thank you Alheisms!
+      </p>
       <ShortcutH2 name='developers' />
       <Users users={dev} />
       <ShortcutH2 name='translators' />
@@ -113,9 +117,7 @@ export default () => {
       <ShortcutH2 name='privacy' />
       <p>First, we collect, store, and use information you share on our website.</p>
       <p>We <i>store</i> the following data <Code>choosen language, test answers, Datetime of submitted test</Code>. Your IP, browser info and fingerprint is <i>not</i> stored</p>
-      <p>We also use Google Analytics to measure traffic to our site and how users interact with our site. The Google Analytics terms specify that no personally identifiable information may be collected through the Google Analytics software.</p>
       <p>We don’t sell your personal data to anyone. Never have, never will.</p>
-      <p>If you have any questions about this privacy policy, please <a href='mailto:jonas.enge@gmail.com' rel='noopener noreferrer' target='_blank'>contact</a> us.</p>
     </>
   )
 }
