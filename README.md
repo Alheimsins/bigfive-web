@@ -1,10 +1,3 @@
-[![Build Status](https://travis-ci.org/Alheimsins/bigfive-web.svg?branch=master)](https://travis-ci.org/Alheimsins/bigfive-web)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-
-# We have moved
-
-Further development of this website is done over at [rubynor/bigfive-web](https://github.com/rubynor/bigfive-web)
-
 # bigfive-web
 
 Website for five factor model of personality based on work from [IPIP-NEO-PI](https://github.com/kholia/IPIP-NEO-PI).
@@ -34,6 +27,7 @@ npm install
 vim config.js # Edit config with vim (or your favorite editor)
 npm run dev
 ```
+
 Open web-browser at http://localhost:3000
 
 ## Deploy using [Now](https://zeit.co/now)
@@ -51,7 +45,7 @@ You can help making a version that supports v2 [here](https://github.com/Alheims
 Install [Docker](https://www.docker.com/)
 
 ```sh
-$ docker run -d -p 3000:3000 --name bigfive-web alheimsins/bigfive-web
+docker run -d -p 3000:3000 --name bigfive-web alheimsins/bigfive-web
 ```
 
 This will spin up a docker container and the test will be accessible at http://localhost:3000

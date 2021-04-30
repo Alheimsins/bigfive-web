@@ -6,6 +6,7 @@ import getConfig from 'next/config'
 import axios from 'axios'
 import { FaInfoCircle } from 'react-icons/fa'
 import { populateData, restoreData, getProgress, clearItems, setItem } from '../lib/localStorageStore'
+
 const { publicRuntimeConfig } = getConfig()
 const httpInstance = axios.create({
   baseURL: publicRuntimeConfig.URL,
@@ -18,7 +19,7 @@ const sleep = require('../lib/sleep')
 export default class extends Component {
   static async getInitialProps ({ query, req }) {
     const lang = query.lang || 'en'
-    const inventory = await getInventory(lang, true, 30)
+    const inventory = await getInventory(lang, true, 120)
     return { inventory, lang }
   }
 
@@ -71,7 +72,7 @@ export default class extends Component {
   }
 
   switchLanguage (lang) {
-    const inventory = getInventory(lang, true, 30)
+    const inventory = getInventory(lang, true, 120)
     const { items } = getItems(this.state.position, this.state.itemsPerPage, inventory).current()
     this.setState({ inventory, lang, items })
     setItem('lang', lang)

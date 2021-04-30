@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Chart } from 'react-google-charts'
+import RadarChart from './RadarChart'
 import { Loading } from './alheimsins'
 
 const COLORS = [
@@ -60,11 +61,20 @@ const PieChart = ({ title, data, vAxis, chartWidth }) => (
   />
 )
 
+const renderCharts = (chartType, props) => {
+  switch (chartType) {
+    case 'PieChart': return <PieChart {...props}/>
+    case 'ColumnChart': return <ColumnChart {...props}/>
+    case 'RadarChart': return <RadarChart {...props} />
+    default: return <RadarChart {...props} />
+  }
+}
+
 export default class extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      chart: 'ColumnChart'
+      chart: 'RadarChart'
     }
   }
 
@@ -73,13 +83,11 @@ export default class extends Component {
     return (
       <>
         <div className='pick-chart'>
+          <span onClick={() => this.setState({ chart: 'RadarChart' })} className={chart === 'RadarChart' ? 'chart selected' : 'chart'}>Radar</span>
           <span onClick={() => this.setState({ chart: 'ColumnChart' })} className={chart === 'ColumnChart' ? 'chart selected' : 'chart'}>Column</span>
-          <span onClick={() => this.setState({ chart: 'PieChart' })} className={chart === 'PieChart' ? 'chart selected' : 'chart'}>Pie</span>
         </div>
         {
-          chart === 'PieChart'
-            ? <PieChart {...this.props} />
-            : <ColumnChart {...this.props} />
+          renderCharts(chart, this.props)
         }
         <style jsx>
           {`
