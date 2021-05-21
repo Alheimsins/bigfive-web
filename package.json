@@ -43,7 +43,7 @@
   "license": "MIT",
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "Sophonaut/b5-johnson-120-ipip-neo-pi-r#main",
-    "@alheimsins/b5-result-text": "4.1.0",
+    "@alheimsins/b5-result-text": "Sophonaut/b5-result-text.git#main",
     "@alheimsins/react-google-charts": "1.6.5",
     "axios": "^0.21.1",
     "b5-calculate-score": "1.0.4",
