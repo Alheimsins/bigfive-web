@@ -4,11 +4,16 @@
   "description": "Website for five factor model of personality",
   "private": true,
   "author": {
-    "name": "Jonas Enge",
-    "email": "jonas.enge@t-fk.no",
-    "url": "https://github.com/telemark"
+    "name": "Peter DePaulo",
+    "email": "peter.depaulo@sophonaut.com",
+    "url": "https://github.com/Sophonaut"
   },
   "contributors": [
+    {
+      "name": "Jonas Enge",
+      "email": "jonas.enge@t-fk.no",
+      "url": "https://github.com/telemark"
+    },
     {
       "name": "Geir Gåsodden",
       "email": "geir.gasodden@pythonia.no",
@@ -51,15 +56,16 @@
     "chart.js": "^2.9.4",
     "dotenv": "8.2.0",
     "express": "4.17.1",
+    "firebase": "^8.6.3",
     "helmet": "3.23.3",
-    "i18next": "12.1.0",
+    "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "3.1.1",
     "i18next-express-middleware": "2.0.0",
     "i18next-node-fs-backend": "2.1.3",
     "i18next-xhr-backend": "1.5.1",
     "iso-639-1": "2.1.4",
     "mongojs": "3.1.0",
-    "next": "9.5.4",
+    "next": "^10.2.3",
     "next-offline": "^5.0.3",
     "next-routes": "1.4.2",
     "react": "16.13.1",
@@ -67,7 +73,7 @@
     "react-copy-to-clipboard": "5.0.2",
     "react-dom": "16.13.1",
     "react-google-charts": "3.0.15",
-    "react-i18next": "8.4.0",
+    "react-i18next": "^9.0.10",
     "react-icons": "3.11.0",
     "request-country": "0.1.5"
   },
