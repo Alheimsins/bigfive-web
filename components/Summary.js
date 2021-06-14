@@ -63,8 +63,8 @@ const PieChart = ({ title, data, vAxis, chartWidth }) => (
 
 const renderCharts = (chartType, props) => {
   switch (chartType) {
-    case 'PieChart': return <PieChart {...props}/>
-    case 'ColumnChart': return <ColumnChart {...props}/>
+    case 'PieChart': return <PieChart {...props} />
+    case 'ColumnChart': return <ColumnChart {...props} />
     case 'RadarChart': return <RadarChart {...props} />
     default: return <RadarChart {...props} />
   }

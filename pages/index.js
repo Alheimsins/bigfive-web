@@ -4,7 +4,6 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import ISO6391 from 'iso-639-1'
 import { getInfo } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
 import withI18next from '../hoc/withI18next'
-import RadarChart from '../components/RadarChart'
 
 const { languages } = getInfo()
 const langCodes = languages.map(lang => lang.id)
