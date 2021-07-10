@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { Router } from '../routes'
 import { Field, Button, InputText } from '../components/alheimsins'
 import getConfig from 'next/config'
 import axios from 'axios'
+import { authenticationService } from '../lib/auth.service'
 
 const { publicRuntimeConfig } = getConfig()
 const http = axios.create({
   baseURL: publicRuntimeConfig.URL,
-  timeout: 8000
+  timeout: 18000
 })
 
 const SignUp = () => {
@@ -20,6 +22,8 @@ const SignUp = () => {
     http.post('/api/users', userData)
       .then(res => {
         console.log(res)
+        authenticationService.login(res.data.user)
+        Router.pushRoute('/test/en')
       })
       .catch(err => {
         console.log(err)

@@ -1,31 +1,24 @@
 const { model, Schema } = require('mongoose')
-const bcrypt = require('bcrypt')
-const SALT_WORK_FACTOR = 10
+const crypto = require('crypto')
 const uniqueValidator = require('mongoose-unique-validator')
 const jwt = require('jsonwebtoken')
 const secret = require('../../config').JWT_SECRET
 
 const UserSchema = new Schema({
-  email: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
-  paid: { type: Boolean, required: true },
+  email: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true, unique: true },
+  paid: { type: Boolean, required: false },
   salt: { type: String, required: true },
   hash: { type: String, required: true }
 }, { timestamps: true })
 
-UserSchema.methods.setPassword = password => {
-  // generate a salt
-  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-    if (err) return err
-    // save the salt
-    this.salt = salt
+UserSchema.methods.validPassword = function (password) {
+  var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
+  return this.hash === hash
+}
 
-    // hash the password using our new salt
-    bcrypt.hash(password, salt, (err, hash) => {
-      if (err) return next(err)
-      // save the hash
-      this.hash = hash
-    })
-  })
+UserSchema.methods.setPassword = function (password) {
+  this.salt = crypto.randomBytes(16).toString('hex')
+  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
 }
 
 UserSchema.methods.generateJWT = function () {
@@ -35,29 +28,21 @@ UserSchema.methods.generateJWT = function () {
 
   return jwt.sign({
     id: this._id,
-    username: this.username,
+    email: this.email,
     exp: parseInt(exp.getTime() / 1000)
   }, secret)
 }
 
-UserSchema.methods.validPassword = password => {
-  bcrypt.compare(password, this.hash, (err, res) => {
-    if (err) { throw err }
-    return res
-  })
-}
-
-UserSchema.methods.toAuthJSON = () => {
+UserSchema.methods.toAuthJSON = (user) => {
+  console.log('here')
   return {
-    email: this.email,
-    token: this.generateJWT()
+    email: user.email,
+    token: user.generateJWT()
   }
 }
 
-UserSchema.methods = paid => {
-  if (paid) {
-
-  }
+UserSchema.methods.setPaid = paid => {
+  this.paid = paid
 }
 
 UserSchema.plugin(uniqueValidator, { message: 'is already taken.' })

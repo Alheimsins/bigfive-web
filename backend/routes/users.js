@@ -8,12 +8,16 @@ const auth = require('./auth')
 router.post('/users', (req, res, next) => {
   var user = new User()
 
+  user.paid = true
   user.email = req.body.user.email
   user.setPassword(req.body.user.password)
 
-  user.save().then(() => {
-    return res.json({ user: user.toAuthJSON() })
-  }).catch(next)
+  user.save()
+    .then(user => {
+      return res.json({
+        user: user.toAuthJSON(user)
+      })
+    }).catch(next)
 })
 
 // POST api/users/login log a user in with a valid email and pass
@@ -53,18 +57,8 @@ router.put('/user', auth.required, (req, res, next) => {
   User.findById(req.payload.id).then((user) => {
     if (!user) { return res.sendStatus(401) }
 
-    // only update fields that were actually passed...
-    if (typeof req.body.user.username !== 'undefined') {
-      user.username = req.body.user.username
-    }
     if (typeof req.body.user.email !== 'undefined') {
       user.email = req.body.user.email
-    }
-    if (typeof req.body.user.bio !== 'undefined') {
-      user.bio = req.body.user.bio
-    }
-    if (typeof req.body.user.image !== 'undefined') {
-      user.image = req.body.user.image
     }
     if (typeof req.body.user.password !== 'undefined') {
       user.setPassword(req.body.user.password)
@@ -74,6 +68,12 @@ router.put('/user', auth.required, (req, res, next) => {
       return res.json({ user: user.toAuthJSON() })
     })
   }).catch(next)
+})
+
+// GET api/logout logs a user out
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
 })
 
 module.exports = router

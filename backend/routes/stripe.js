@@ -89,9 +89,9 @@ router.post('/webhook', async (req, res) => {
     // passport.authenticate('local')
     const stringifiedData = encodeURIComponent(data)
 
-    console.log('🔔  Payment received!')
+    console.log('🔔  Payment received!', stringifiedData)
 
-    res.redirect('/signup?data=' + stringifiedData)
+    // res.redirect('/signup?data=' + stringifiedData)
   }
 })
 

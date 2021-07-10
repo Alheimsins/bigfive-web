@@ -6,10 +6,7 @@ if (dev) {
 const next = require('next')
 // frontend routes
 const routes = require('../routes')
-require('./models/User')
-
 const mongo = require('mongojs')
-
 const mongoose = require('mongoose')
 
 const helmet = require('helmet')
@@ -24,6 +21,7 @@ const app = next({ dev })
 const handler = routes.getRequestHandler(app)
 const port = parseInt(process.env.PORT, 10) || 3000
 const express = require('express')
+require('./models/User')
 const userRoutes = require('./routes/users')
 const stripeRoutes = require('./routes/stripe')
 
