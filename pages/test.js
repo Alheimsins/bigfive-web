@@ -8,7 +8,7 @@ import { FaInfoCircle } from 'react-icons/fa'
 import { populateData, restoreData, getProgress, clearItems, setItem } from '../lib/localStorageStore'
 
 const { publicRuntimeConfig } = getConfig()
-const httpInstance = axios.create({
+const http = axios.create({
   baseURL: publicRuntimeConfig.URL,
   timeout: 8000
 })
@@ -121,7 +121,7 @@ export default class extends Component {
         timeElapsed: Math.round((Date.now() - this.state.now) / 1000),
         dateStamp: Date.now()
       }
-      const { data } = await httpInstance.post('/api/save', result)
+      const { data } = await http.post('/api/save', result)
       setItem('result', data._id)
       Router.pushRoute('showResult', { id: data._id })
     } else {
@@ -145,7 +145,7 @@ export default class extends Component {
         </div>
         <ProgressBar progress={progress} />
         {
-          restore && <p onClick={this.handleClearAnswers} style={{ color: '#FF0080', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
+          restore && <p onClick={this.handleClearAnswers} style={{ color: '#FF6E14', marginTop: '10px', cursor: 'pointer' }}><FaInfoCircle /> Your state is restored from LocalStorage. Click here to start over again.</p>
         }
         {items.map(item =>
           <div key={item.id} className={lang === 'ur' ? 'item inverted-text' : 'item'}>

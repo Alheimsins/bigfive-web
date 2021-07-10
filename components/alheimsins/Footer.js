@@ -1,15 +1,9 @@
 import Link from './Link'
-import Logo from './Logo'
+// import Logo from './Logo'
 
 const links = [
   {
-    url: 'https://alheimsins.net',
-    name: 'alheimsins',
-    icon: Logo({ color: 'white' }),
-    color: 'white'
-  },
-  {
-    url: 'https://github.com/alheimsins',
+    url: 'https://github.com/Sophonaut',
     name: 'github'
   },
   {

@@ -1,6 +1,6 @@
 import Link from './Link'
 
-export default ({ user, info }) => (
+const Header = ({ user, info }) => (
   <header>
     <div className='nav-container'>
       <div className='links-container'>
@@ -13,7 +13,7 @@ export default ({ user, info }) => (
       <div className='nav-right'>
         {user
           ? <span>logged in as <b>{user}</b></span>
-          : <a href='/api/login' style={{ color: 'black' }}>LOGIN</a>}
+          : <Link route='/signup' activeClassName='active'><a>LOGIN</a></Link>}
       </div>
       {info && <div className='nav-info'>{info}</div>}
     </div>
@@ -61,3 +61,5 @@ export default ({ user, info }) => (
     </style>
   </header>
 )
+
+export default Header

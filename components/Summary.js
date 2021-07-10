@@ -32,23 +32,7 @@ const prepareData = data =>
 const ColumnChart = ({ title, data, vAxis, chartWidth }) => (
   <Chart
     chartType='ColumnChart'
-    style={{ width: '90vw' }}
-    data={[
-      [{ type: 'string' }, { type: 'number' }, { role: 'style' }],
-      ...prepareData(data)
-    ]}
-    options={{ vAxis, legend: 'none' }}
-    width={chartWidth}
-    height='500px'
-    graph_id={title}
-    loader={<Loading />}
-  />
-)
-
-const PieChart = ({ title, data, vAxis, chartWidth }) => (
-  <Chart
-    chartType='PieChart'
-    style={{ width: '90vw' }}
+    style={{ width: '100%' }}
     data={[
       [{ type: 'string' }, { type: 'number' }, { role: 'style' }],
       ...prepareData(data)
@@ -63,7 +47,6 @@ const PieChart = ({ title, data, vAxis, chartWidth }) => (
 
 const renderCharts = (chartType, props) => {
   switch (chartType) {
-    case 'PieChart': return <PieChart {...props} />
     case 'ColumnChart': return <ColumnChart {...props} />
     case 'RadarChart': return <RadarChart {...props} />
     default: return <RadarChart {...props} />

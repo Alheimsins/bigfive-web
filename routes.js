@@ -7,4 +7,5 @@ routes
   .add('result', '/result')
   .add('showResult', '/result/:id')
   .add('compare', '/compare')
+  .add('signup', '/signup')
   .add('showCompare', '/compare/:id', 'showCompare')

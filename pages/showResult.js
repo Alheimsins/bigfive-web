@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import calculateScore from 'b5-calculate-score'
-import getResult from '@alheimsins/b5-result-text'
+import getResult from '@sophonaut/b5-result-text'
 import axios from 'axios'
 import { Code } from '../components/alheimsins'
 import getConfig from 'next/config'
@@ -41,7 +41,7 @@ const Resume = ({ data, chartWidth }) => (
   </div>
 )
 
-export default class extends Component {
+export default class ShowResult extends Component {
   static async getInitialProps ({ query }) {
     if (query.id) {
       const results = await getResultFromId(query.id)

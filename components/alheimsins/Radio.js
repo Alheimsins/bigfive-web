@@ -25,11 +25,10 @@ export default class Radio extends Component {
               cursor: pointer;
               margin-right: 5px;
             }
-            .checked {
-              color: ${this.props.checkedColor || 'black'}
+            .checked { || 'black'}
             }
-            .color5 { color: #FF0080 }
-            .color4 { color: #FF47A3 }
+            .color5 { color: #FF6E14 } 
+            .color4 { color: #1418FF }
             .color3 { color: #FF70B8 }
             .color2 { color: #FF85C2 }
             .color1 { color: #FFADD6 }
